@@ -782,7 +782,7 @@
                     <span>数据更新时间: <span id="updateTime"></span></span>
                 </div>
                 <div class="update-badge">
-                    <span>📊 监控账号: 7个</span>
+                    <span>📊 监控账号: <span id="accountCount"></span>个</span>
                 </div>
                 <div class="update-badge">
                     <span>🔄 自动更新: 每日 09:00</span>
@@ -802,15 +802,15 @@
                         <div class="platform-name">🎵 抖音平台</div>
                         <div class="platform-stats">
                             <div class="platform-stat">
-                                <div class="platform-stat-value" id="totalFans">57.8万</div>
+                                <div class="platform-stat-value" id="totalFans"></div>
                                 <div class="platform-stat-label">总粉丝</div>
                             </div>
                             <div class="platform-stat">
-                                <div class="platform-stat-value" id="totalLikes">423.1万</div>
+                                <div class="platform-stat-value" id="totalLikes"></div>
                                 <div class="platform-stat-label">总获赞</div>
                             </div>
                             <div class="platform-stat">
-                                <div class="platform-stat-value" id="totalVideos">356</div>
+                                <div class="platform-stat-value" id="totalVideos"></div>
                                 <div class="platform-stat-label">总作品</div>
                             </div>
                             <div class="platform-stat">
@@ -834,355 +834,9 @@
             </div>
         </div>
 
-        <!-- 账号详细数据 -->
-        <div class="grid">
-            <div class="card account-card s-grade" id="account-1">
-                <div class="account-header">
-                    <div>
-                        <div class="account-name">🥇 人形抖机灵</div>
-                        <span class="account-id">抖音号: 52856255811</span>
-                    </div>
-                    <span class="grade-badge grade-s">S级</span>
-                </div>
-                <div class="metrics-grid">
-                    <div class="metric">
-                        <div class="metric-value">2,017</div>
-                        <div class="metric-label">粉丝数</div>
-                        <div class="metric-change up">↑ 领跑自营</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">217,000</div>
-                        <div class="metric-label">获赞数</div>
-                        <div class="metric-change up">↑ 头部</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">143</div>
-                        <div class="metric-label">作品数</div>
-                        <div class="metric-change neutral">- 活跃</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">1,517</div>
-                        <div class="metric-label">平均点赞</div>
-                        <div class="metric-change up">↑ 优质</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                        <div class="metric-label">总播放量</div>
-                        <div class="metric-change neutral">- 需登录</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                        <div class="metric-label">均播放/篇</div>
-                        <div class="metric-change neutral">- 需登录</div>
-                    </div>
-                </div>
-                <div class="account-tags">
-                    <span class="tag success">互动率 53.6%</span>
-                    <span class="tag primary">内容垂直度高</span>
-                    <span class="tag">广东IP</span>
-                </div>
-                <div class="latest-video" id="renxing-latest">
-                    <div class="latest-video-label">📺 最新作品</div>
-                    <div class="latest-video-title">你以为vs实际上的机器人马拉松</div>
-                    <div class="latest-video-stats">
-                        <span>❤️ 31</span>
-                        <span>💬 4</span>
-                        <span>🔄 1</span>
-                        <span>⭐ 1</span>
-                        <span>📅 04-14</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 机圈BB机 -->
-            <div class="card account-card b-grade" id="account-2">
-                <div class="account-header">
-                    <div>
-                        <div class="account-name">机圈BB机</div>
-                        <span class="account-id">抖音号: 86637099670</span>
-                    </div>
-                    <span class="grade-badge grade-b">B级</span>
-                </div>
-                <div class="metrics-grid">
-                    <div class="metric">
-                        <div class="metric-value" id="bbj-fans">1,713</div>
-                        <div class="metric-label">粉丝数</div>
-                        <div class="metric-change up">↑ +544</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="bbj-likes">19,000</div>
-                        <div class="metric-label">获赞数</div>
-                        <div class="metric-change up">↑ 增长</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="bbj-videos">100</div>
-                        <div class="metric-label">作品数</div>
-                        <div class="metric-change up">↑ 百作里程碑</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="bbj-avg">190</div>
-                        <div class="metric-label">平均点赞</div>
-                        <div class="metric-change down">↓ 需优化</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                        <div class="metric-label">总播放量</div>
-                        <div class="metric-change neutral">- 需登录</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                        <div class="metric-label">均播放/篇</div>
-                        <div class="metric-change neutral">- 需登录</div>
-                    </div>
-                </div>
-                <div class="account-tags">
-                    <span class="tag warning">互动率 12.0%</span>
-                    <span class="tag">广东IP</span>
-                    <span class="tag">机圈内容</span>
-                </div>
-                <div class="latest-video" id="bbj-latest">
-                    <div class="latest-video-label">📺 最新作品</div>
-                    <div class="latest-video-title">盘点！2026机器人马拉松参赛选手！</div>
-                    <div class="latest-video-stats">
-                        <span>❤️ 2,620</span>
-                        <span>💬 190</span>
-                        <span>🔄 658</span>
-                        <span>⭐ 831</span>
-                        <span>📅 04-15</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 机你钛美 -->
-            <div class="card account-card b-grade" id="account-3">
-                <div class="account-header">
-                    <div>
-                        <div class="account-name">机你钛美</div>
-                        <span class="account-id">抖音号: 待确认</span>
-                    </div>
-                    <span class="grade-badge grade-b">B级</span>
-                </div>
-                <div class="metrics-grid">
-                    <div class="metric">
-                        <div class="metric-value" id="jntm-fans">117</div>
-                        <div class="metric-label">粉丝数</div>
-                        <div class="metric-change up">↑ 新账号</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jntm-likes">7,053</div>
-                        <div class="metric-label">获赞数</div>
-                        <div class="metric-change up">↑ 潜力</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jntm-videos">46</div>
-                        <div class="metric-label">作品数</div>
-                        <div class="metric-change neutral">- 起步</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jntm-avg">153</div>
-                        <div class="metric-label">平均点赞</div>
-                        <div class="metric-change up">↑ 良好</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                        <div class="metric-label">总播放量</div>
-                        <div class="metric-change neutral">- 需登录</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                        <div class="metric-label">均播放/篇</div>
-                        <div class="metric-change neutral">- 需登录</div>
-                    </div>
-                </div>
-                <div class="account-tags">
-                    <span class="tag success">互动率 60.3%</span>
-                    <span class="tag primary">高粘性</span>
-                    <span class="tag">新号潜力</span>
-                </div>
-                <div class="latest-video" id="jntm-latest">
-                    <div class="latest-video-label">📺 最新作品</div>
-                    <div class="latest-video-title">在家就能吃土豆 #农用机器人 #人形机器人</div>
-                    <div class="latest-video-stats">
-                        <span>❤️ 11</span>
-                        <span>💬 1</span>
-                        <span>🔄 0</span>
-                        <span>⭐ 5</span>
-                        <span>📅 04-15</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 机圈哈机咪 -->
-            <div class="card account-card c-grade" id="account-4">
-                <div class="account-header">
-                    <div>
-                        <div class="account-name">机圈哈机咪</div>
-                        <span class="account-id">抖音号: 78541570295</span>
-                    </div>
-                    <span class="grade-badge grade-c">C级</span>
-                </div>
-                <div class="metrics-grid">
-                    <div class="metric">
-                        <div class="metric-value" id="jqhjm-fans">18</div>
-                        <div class="metric-label">粉丝数</div>
-                        <div class="metric-change neutral">- 起步期</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jqhjm-likes">693</div>
-                        <div class="metric-label">获赞数</div>
-                        <div class="metric-change neutral">- 积累中</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jqhjm-videos">37</div>
-                        <div class="metric-label">作品数</div>
-                        <div class="metric-change neutral">- 初期</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jqhjm-avg">19</div>
-                        <div class="metric-label">平均点赞</div>
-                        <div class="metric-change neutral">- 待优化</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                        <div class="metric-label">总播放量</div>
-                        <div class="metric-change neutral">- 需登录</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                        <div class="metric-label">均播放/篇</div>
-                        <div class="metric-change neutral">- 需登录</div>
-                    </div>
-                </div>
-                <div class="account-tags">
-                    <span class="tag">互动率 38.5%</span>
-                    <span class="tag">广东IP</span>
-                    <span class="tag warning">需运营</span>
-                </div>
-                <div class="latest-video" id="jqhjm-latest">
-                    <div class="latest-video-label">📺 最新作品</div>
-                    <div class="latest-video-title">机器狗：我都不算人了怎么还得军训？</div>
-                    <div class="latest-video-stats">
-                        <span>❤️ 2</span>
-                        <span>💬 0</span>
-                        <span>🔄 0</span>
-                        <span>⭐ 1</span>
-                        <span>📅 04-15</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 机圈速报 -->
-            <div class="card account-card c-grade" id="account-5">
-                <div class="account-header">
-                    <div>
-                        <div class="account-name">机圈速报</div>
-                        <span class="account-id">抖音号: 34456203660</span>
-                    </div>
-                    <span class="grade-badge grade-c">新号</span>
-                </div>
-                <div class="metrics-grid">
-                    <div class="metric">
-                        <div class="metric-value" id="jqsb-fans">1</div>
-                        <div class="metric-label">粉丝数</div>
-                        <div class="metric-change neutral">- 起步期</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jqsb-likes">23</div>
-                        <div class="metric-label">获赞数</div>
-                        <div class="metric-change neutral">- 积累中</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jqsb-videos">11</div>
-                        <div class="metric-label">作品数</div>
-                        <div class="metric-change neutral">- 初期</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jqsb-avg">2</div>
-                        <div class="metric-label">平均点赞</div>
-                        <div class="metric-change neutral">- 待优化</div>
-                    </div>
-                </div>
-                <div class="account-tags">
-                    <span class="tag">互动率 2300%</span>
-                    <span class="tag warning">新账号冷启动</span>
-                </div>
-            </div>
-
-            <!-- AI热点圈 -->
-            <div class="card account-card c-grade" id="account-6">
-                <div class="account-header">
-                    <div>
-                        <div class="account-name">AI热点圈</div>
-                        <span class="account-id">抖音号: 33318449806</span>
-                    </div>
-                    <span class="grade-badge grade-c">新号</span>
-                </div>
-                <div class="metrics-grid">
-                    <div class="metric">
-                        <div class="metric-value" id="aihot-fans">110</div>
-                        <div class="metric-label">粉丝数</div>
-                        <div class="metric-change up">↑ 成长中</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="aihot-likes">4,682</div>
-                        <div class="metric-label">获赞数</div>
-                        <div class="metric-change up">↑ 潜力</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="aihot-videos">15</div>
-                        <div class="metric-label">作品数</div>
-                        <div class="metric-change neutral">- 起步</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="aihot-avg">312</div>
-                        <div class="metric-label">平均点赞</div>
-                        <div class="metric-change up">↑ 良好</div>
-                    </div>
-                </div>
-                <div class="account-tags">
-                    <span class="tag success">互动率 42.6%</span>
-                    <span class="tag primary">高赞低粉</span>
-                    <span class="tag">待爆发</span>
-                </div>
-            </div>
-
-            <!-- 具身情报局 -->
-            <div class="card account-card s-grade" id="account-7">
-                <div class="account-header">
-                    <div>
-                        <div class="account-name">🏆 具身情报局</div>
-                        <span class="account-id">抖音号: 66896838</span>
-                    </div>
-                    <span class="grade-badge grade-s">S+级</span>
-                </div>
-                <div class="metrics-grid">
-                    <div class="metric">
-                        <div class="metric-value" id="jsbj-fans">57.4万</div>
-                        <div class="metric-label">粉丝数</div>
-                        <div class="metric-change up">↑ 头部账号</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jsbj-likes">398.3万</div>
-                        <div class="metric-label">获赞数</div>
-                        <div class="metric-change up">↑ 超头部</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jsbj-videos">4</div>
-                        <div class="metric-label">作品数</div>
-                        <div class="metric-change up">↑ 爆款</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value" id="jsbj-avg">99.6万</div>
-                        <div class="metric-label">平均点赞</div>
-                        <div class="metric-change up">↑ 爆款级</div>
-                    </div>
-                </div>
-                <div class="account-tags">
-                    <span class="tag success">互动率 693.1%</span>
-                    <span class="tag primary">少而精爆款策略</span>
-                    <span class="tag">竞品标杆</span>
-                </div>
-            </div>
+        <!-- 账号详细数据（JS动态渲染） -->
+        <div class="grid" id="accountCards">
+            <!-- 由 renderAccountCards() 动态生成 -->
         </div>
         <div class="grid">
             <div class="card">
@@ -1364,26 +1018,8 @@
                     <div class="icon" style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white;">💡</div>
                     数据洞察
                 </div>
-                <div class="insight-item">
-                    <div class="insight-icon" style="background: #fef3c7;">🏆</div>
-                    <div class="insight-content">
-                        <h4>竞品标杆：具身情报局</h4>
-                        <p><strong>具身情报局</strong>仅4条作品斩获398.3万获赞、57.4万粉丝，平均单篇点赞99.6万，互动率693%。极致爆款策略值得深度研究——少而精，篇篇爆。</p>
-                    </div>
-                </div>
-                <div class="insight-item">
-                    <div class="insight-icon" style="background: #dbeafe;">🚀</div>
-                    <div class="insight-content">
-                        <h4>高赞低粉异常账号</h4>
-                        <p><strong>AI热点圈</strong>仅110粉丝但获赞4682，互动率42.6%，说明内容质量不错但分发受限。建议分析其爆款选题，参考内容方向。</p>
-                    </div>
-                </div>
-                <div class="insight-item">
-                    <div class="insight-icon" style="background: #d1fae5;">⚡</div>
-                    <div class="insight-content">
-                        <h4>自营矩阵现状</h4>
-                        <p><strong>人形抖机灵</strong>以2017粉/21.7万赞领跑自营账号，互动率53.6%。与竞品具身情报局相比差距较大，建议对标其爆款结构进行内容升级。</p>
-                    </div>
+                <div id="insightsContainer">
+                    <!-- 由 renderInsights() 动态生成 -->
                 </div>
             </div>
 
@@ -1517,219 +1153,221 @@
     </div>
 
     <script>
-        // 设置更新时间
-        document.getElementById('updateTime').textContent = dayjs().format('YYYY-MM-DD HH:mm');
+        // ==========================================
+        // 唯一数据源 - 由 update_dashboard.js 从 douyin_data.json 自动注入
+        // 格式: { accounts: [...], last_update: "ISO时间", update_note: "时间线文案" }
+        // ⚠️ 禁止手动修改此变量！数据来源只有一个：douyin_data.json
+        // ==========================================
+        const RAW_DATA = {"accounts":[{"name":"人形抖机灵","douyin_id":"52856255811","fans":2017,"likes":217000,"videos":143,"type":"own","tag":"广东IP","latest_videos":[{"desc":"你以为vs实际上的机器人马拉松 #机器人马拉松   #人形机器人 #机器人  #马拉松  #机器人达人秀","create_time":"2026-04-14","digg_count":31,"comment_count":4,"share_count":1,"collect_count":1},{"desc":"人形机器人马拉松进化历程 #人形机器人 #机器人马拉松 #机器人 #宇树科技 #机器人达人秀","create_time":"2026-04-13","digg_count":16,"comment_count":0,"share_count":0,"collect_count":1},{"desc":"中日同一期机器人发展对比 #人形机器人 #机器人 #发展史 #中国 #日本","create_time":"2026-04-11","digg_count":61,"comment_count":3,"share_count":3,"collect_count":39},{"desc":"ASIMO传奇延续 人形机器人的时代接力#本田asimo机器人 #ASIMO #优必选 #人形机器人 #机器人达人秀","create_time":"2026-04-10","digg_count":26,"comment_count":0,"share_count":0,"collect_count":10},{"desc":"小米机器人以前vs现在 #小米 #小米铁大 #雷军 #人形机器人 #机器人达人秀","create_time":"2026-04-08","digg_count":16,"comment_count":0,"share_count":0,"collect_count":2}]},{"name":"机圈BB机","douyin_id":"86637099670","fans":1713,"likes":19000,"videos":100,"type":"own","tag":"广东IP","latest_videos":[{"desc":"盘点！2026机器人马拉松参赛选手！ 根据公开资料整理，不完全统计，欢迎补充～\n#机器人马拉松 #北京亦庄人形机器人半程马拉松 #人形机器人 #机器人半马","create_time":"2026-04-15","digg_count":2620,"comment_count":190,"share_count":658,"collect_count":831},{"desc":"盘点！机器人马拉松夺冠大热门，相关公司全梳理！ #机器人马拉松 #机器人 #马拉松 #亦庄机器人 #科技","create_time":"2026-04-14","digg_count":1056,"comment_count":111,"share_count":333,"collect_count":897},{"desc":"机器人马拉松热门选手盘点！4.19巅峰对决，谁最有可能夺冠？ #机器人马拉松 #机器人 #马拉松 #亦庄机器人半马","create_time":"2026-04-13","digg_count":671,"comment_count":29,"share_count":206,"collect_count":89},{"desc":"人形机器人供应链：20家谐波减速器企业 #人形机器人 #谐波减速器 #供应链 #科技","create_time":"2026-04-12","digg_count":42,"comment_count":0,"share_count":1,"collect_count":18},{"desc":"人形机器人核心零部件之电机TOP 30 #机器人 #人形机器人 #供应链 #电机 #空心杯电机","create_time":"2026-04-10","digg_count":24,"comment_count":0,"share_count":0,"collect_count":11}]},{"name":"机你钛美","douyin_id":"待确认","fans":117,"likes":7053,"videos":46,"type":"own","tag":"新号潜力","latest_videos":[{"desc":"在家就能吃土豆#农用机器人 #人形机器人","create_time":"2026-04-15","digg_count":11,"comment_count":1,"share_count":0,"collect_count":5},{"desc":"看到机器人耕田，有点心疼老一辈#人形机器人 #未来农业 #科技改变生活","create_time":"2026-04-14","digg_count":54,"comment_count":5,"share_count":5,"collect_count":4},{"desc":"下班不基础#人形机器人 #胆小鬼 #下班后的日常","create_time":"2026-04-11","digg_count":38,"comment_count":1,"share_count":7,"collect_count":1},{"desc":"机器人也会自娱自乐了#人形机器人#搬砖人","create_time":"2026-04-10","digg_count":9,"comment_count":1,"share_count":0,"collect_count":3},{"desc":"未来缉毒局顶级战力上线#人形机器人","create_time":"2026-04-08","digg_count":5,"comment_count":0,"share_count":0,"collect_count":0}]},{"name":"机圈哈机咪","douyin_id":"78541570295","fans":18,"likes":693,"videos":37,"type":"own","tag":"需运营","latest_videos":[{"desc":"机器狗：我都不算人了怎么还得军训？ #机器狗 #机器人训练营 #搞笑 #娱乐 #军训","create_time":"2026-04-15","digg_count":2,"comment_count":0,"share_count":0,"collect_count":1},{"desc":"机器人半马雷霆跑姿 这波谁来了都绷不住 #机器人马拉松 #机器人半马 #人形机器人 #搞笑 #娱乐","create_time":"2026-04-15","digg_count":5,"comment_count":0,"share_count":1,"collect_count":0},{"desc":"这波贪了应该留到春晚看的 机器人半马笑死一个算一个 #人形机器人#机器人半马#机器人#机器人马拉松","create_time":"2026-04-14","digg_count":9,"comment_count":3,"share_count":0,"collect_count":1},{"desc":"丰田篮球机器人杀疯，詹姆斯都要失业？ #人形机器人 #机器人 #AI #丰田 #篮球机器人","create_time":"2026-04-13","digg_count":3,"comment_count":0,"share_count":2,"collect_count":0}]},{"name":"机圈速报","douyin_id":"34456203660","fans":1,"likes":23,"videos":11,"type":"competitor","tag":"竞品","latest_videos":[{"desc":"亦庄半马周日开跑 人机大战悬念拉满#机器人马拉松 #人形机器人 #机器人 #马拉松 #机器人达人秀","create_time":"2026-04-15","digg_count":1,"comment_count":0,"share_count":0,"collect_count":0},{"desc":"身高1.2米，手心会吹泡泡 这款“欢乐机器人”杀进美国了#人形机器人 #机器人 #儿童 #美国 #机器人达人秀","create_time":"2026-04-15","digg_count":0,"comment_count":0,"share_count":0,"collect_count":0},{"desc":"人形机器人上岗韩国乐天物流中心 计划2030年商用#人形机器人 #机器人 #物流 #韩国 #机器人达人秀","create_time":"2026-04-15","digg_count":0,"comment_count":0,"share_count":0,"collect_count":0},{"desc":"从“贴地”到“贴地飞行” #机器人马拉松 #人形机器人 #机器人 #马拉松 #机器人达人秀","create_time":"2026-04-13","digg_count":6,"comment_count":2,"share_count":0,"collect_count":1},{"desc":"比库里投的还准？ 丰田发布AI篮球机器人CUE7#丰田 #丰田机器人 #人形机器人 #篮球 #机器人达人秀","create_time":"2026-04-13","digg_count":0,"comment_count":0,"share_count":0,"collect_count":0}]},{"name":"AI热点圈","douyin_id":"33318449806","fans":110,"likes":4682,"videos":15,"type":"competitor","tag":"竞品","latest_videos":[{"desc":"月薪3万去内蒙草原给DeepSeek守机房 #DeepSeek #AI","create_time":"2026-04-14","digg_count":143,"comment_count":22,"share_count":101,"collect_count":26},{"desc":"Meta内部卷疯了！烧Token正成为一种新的身份象征 #AI #Meta #Token","create_time":"2026-04-11","digg_count":21,"comment_count":2,"share_count":2,"collect_count":2},{"desc":"俞浩发飙 2亿招机器人首席科学家｜要全面开战宇树 #人形机器人 #机器人 #俞浩 #宇树","create_time":"2026-04-10","digg_count":20,"comment_count":3,"share_count":0,"collect_count":1},{"desc":"小米汽车密集引入多名特斯拉前高管 冲刺55万辆年目标 #小米 #小米汽车 #特斯拉","create_time":"2026-04-10","digg_count":9,"comment_count":5,"share_count":1,"collect_count":0},{"desc":"谁说中国造不出好的机车/机器人 #张雪机车#人形机器人  #机器人","create_time":"2026-04-10","digg_count":17,"comment_count":2,"share_count":1,"collect_count":3}]},{"name":"具身情报局","douyin_id":"66896838","fans":574000,"likes":3983000,"videos":4,"type":"competitor","tag":"竞品标杆","latest_videos":[{"desc":"机器人跑半马，到底有啥用？ #机器人  #AI  #科技  #机器人半马  #机器人达人秀","create_time":"2026-04-14","digg_count":1050,"comment_count":48,"share_count":53,"collect_count":59},{"desc":"优必选年报深度剖析！谁才是真·机器人一哥？ #优必选  #人形机器人  #科技  #具身智能 #宇树","create_time":"2026-04-07","digg_count":5813,"comment_count":377,"share_count":721,"collect_count":971},{"desc":"招股书背后，宇树的护城河到底在哪？ #机器人  #宇树  #人形机器人 #优必选 #机器人达人秀","create_time":"2026-04-01","digg_count":937,"comment_count":16,"share_count":20,"collect_count":61},{"desc":"有Helix 02，你的下一只龙虾，何必是OpenClaw？#openclaw  #机器人  #figure  #科技  #龙虾","create_time":"2026-03-11","digg_count":457,"comment_count":8,"share_count":6,"collect_count":37}]}],"last_update":"2026-04-22T06:30:31.179Z","update_note":"2026-04-22 17:57 🔄 自动更新：7个账号数据同步完成"};
 
-        // 账号数据 - 2026-04-22 新增3个账号，共7个
-        const accountData = {
-            labels: ['人形抖机灵', '机圈BB机', '机你钛美', '机圈哈机咪', '机圈速报', 'AI热点圈', '具身情报局'],
-            fans: [2017, 1713, 117, 18, 1, 110, 574000],
-            likes: [217000, 19000, 7053, 693, 23, 4682, 3983000],
-            videos: [143, 100, 46, 37, 11, 15, 4],
-            avgLikes: [1517, 190, 153, 19, 2, 312, 995750],
-            engagement: [53.6, 11.1, 60.3, 38.5, 2300, 42.6, 693.1],
-            grades: ['S', 'B', 'B', 'C', 'C', 'C', 'S'],
-            // 播放量数据 - 需登录获取，当前暂无
-            plays: [0, 0, 0, 0, 0, 0, 0],
-            avgPlays: [0, 0, 0, 0, 0, 0, 0]
-        };
+        // ========== 从 RAW_DATA 派生所有数据 ==========
+        function fmt(n) { return n >= 10000 ? (n / 10000).toFixed(1) + '万' : n.toLocaleString(); }
 
-        // 图表配置
+        const labels = RAW_DATA.accounts.map(a => a.name);
+        const fansArr = RAW_DATA.accounts.map(a => a.fans);
+        const likesArr = RAW_DATA.accounts.map(a => a.likes);
+        const videosArr = RAW_DATA.accounts.map(a => a.videos);
+        const avgLikesArr = RAW_DATA.accounts.map(a => Math.round(a.likes / a.videos));
+        const engagementArr = RAW_DATA.accounts.map(a => a.fans > 0 ? parseFloat(((a.likes / a.fans) * 100).toFixed(1)) : 0);
+
+        function getGrade(idx) {
+            const eng = engagementArr[idx];
+            const fans = fansArr[idx];
+            if (eng > 500 || fans > 100000) return 'S';
+            if (eng > 50 || fans > 1000) return eng > 100 ? 'S' : 'B';
+            if (eng > 30) return 'B';
+            return 'C';
+        }
+        const gradesArr = RAW_DATA.accounts.map((_, i) => getGrade(i));
+
+        // 兼容旧代码的 accountData
+        const accountData = { labels, fans: fansArr, likes: likesArr, videos: videosArr, avgLikes: avgLikesArr, engagement: engagementArr, grades: gradesArr, plays: [0,0,0,0,0,0,0], avgPlays: [0,0,0,0,0,0,0] };
+
+        // 核心指标总览
+        const totalFans = fansArr.reduce((s, v) => s + v, 0);
+        const totalLikes = likesArr.reduce((s, v) => s + v, 0);
+        const totalVideos = videosArr.reduce((s, v) => s + v, 0);
+        document.getElementById('totalFans').textContent = fmt(totalFans);
+        document.getElementById('totalLikes').textContent = fmt(totalLikes);
+        document.getElementById('totalVideos').textContent = totalVideos.toLocaleString();
+        document.getElementById('accountCount').textContent = RAW_DATA.accounts.length;
+
+        // 更新时间
+        document.getElementById('updateTime').textContent = dayjs(RAW_DATA.last_update).format('YYYY-MM-DD HH:mm');
+
+        // ========== 动态渲染账号卡片 ==========
+        function renderAccountCards() {
+            const container = document.getElementById('accountCards');
+            container.innerHTML = RAW_DATA.accounts.map((acc, idx) => {
+                const grade = gradesArr[idx];
+                const gradeLabel = grade === 'S' && fansArr[idx] > 100000 ? 'S+级' : grade + '级';
+                const avg = avgLikesArr[idx];
+                const eng = engagementArr[idx];
+                const engColor = eng > 100 ? 'success' : eng > 30 ? 'primary' : '';
+                const engTag = engColor || 'warning';
+                const videos = acc.latest_videos || [];
+                const latest = videos.length > 0 ? videos[0] : null;
+                const latestDate = latest ? (latest.create_time || '').slice(5) : '-';
+                const latestTitle = latest ? (latest.desc || '暂无').split('#')[0].trim() : '暂无';
+
+                // 账号选择器按钮
+                const gradeClass = grade.toLowerCase();
+
+                return `
+                <div class="card account-card ${gradeClass}-grade">
+                    <div class="account-header">
+                        <div>
+                            <div class="account-name">${idx === 0 ? '🥇 ' : idx === labels.length - 1 ? '🏆 ' : ''}${acc.name}</div>
+                            <span class="account-id">抖音号: ${acc.douyin_id}</span>
+                        </div>
+                        <span class="grade-badge grade-${gradeClass}">${gradeLabel}</span>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">${fmt(acc.fans)}</div>
+                            <div class="metric-label">粉丝数</div>
+                            <div class="metric-change ${acc.type === 'own' ? 'up' : 'neutral'}">${acc.type === 'own' ? '↑ 自营' : '- 竞品'}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${fmt(acc.likes)}</div>
+                            <div class="metric-label">获赞数</div>
+                            <div class="metric-change up">↑ ${avg >= 10000 ? fmt(avg) : avg + '/篇'}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${acc.videos}</div>
+                            <div class="metric-label">作品数</div>
+                            <div class="metric-change neutral">- ${acc.videos >= 100 ? '百作+' : acc.videos >= 30 ? '活跃' : '起步'}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${avg >= 10000 ? fmt(avg) : avg.toLocaleString()}</div>
+                            <div class="metric-label">平均点赞</div>
+                            <div class="metric-change ${avg >= 100 ? 'up' : 'neutral'}">${avg >= 100 ? '↑ 优质' : '- 待提升'}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
+                            <div class="metric-label">总播放量</div>
+                            <div class="metric-change neutral">- 需登录</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
+                            <div class="metric-label">均播放/篇</div>
+                            <div class="metric-change neutral">- 需登录</div>
+                        </div>
+                    </div>
+                    <div class="account-tags">
+                        <span class="tag ${engTag}">互动率 ${eng}%</span>
+                        <span class="tag ${acc.type === 'competitor' ? '' : 'primary'}">${acc.tag}</span>
+                    </div>
+                    ${latest ? `
+                    <div class="latest-video">
+                        <div class="latest-video-label">📺 最新作品</div>
+                        <div class="latest-video-title">${latestTitle}</div>
+                        <div class="latest-video-stats">
+                            <span>❤️ ${latest.digg_count.toLocaleString()}</span>
+                            <span>💬 ${latest.comment_count.toLocaleString()}</span>
+                            <span>🔄 ${latest.share_count.toLocaleString()}</span>
+                            <span>⭐ ${latest.collect_count.toLocaleString()}</span>
+                            <span>📅 ${latestDate}</span>
+                        </div>
+                    </div>` : ''}
+                </div>`;
+            }).join('');
+        }
+        renderAccountCards();
+
+        // ========== 图表 ==========
         const chartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
             scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0,0,0,0.05)'
-                    }
-                },
-                x: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        font: {
-                            size: 11
-                        }
-                    }
-                }
+                y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
+                x: { grid: { display: false }, ticks: { font: { size: 11 } } }
             }
         };
 
-        // 粉丝数图表
-        new Chart(document.getElementById('fansChart'), {
-            type: 'bar',
-            data: {
-                labels: accountData.labels,
-                datasets: [{
-                    data: accountData.fans,
-                    backgroundColor: [
-                        '#fbbf24', '#a78bfa', '#60a5fa', '#9ca3af', '#fb923c', '#f472b6', '#f97316'
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: chartOptions
-        });
+        const COLORS_7 = ['#fbbf24','#a78bfa','#60a5fa','#9ca3af','#fb923c','#f472b6','#f97316'];
+        const COLORS_7B = ['#f472b6','#ec4899','#a78bfa','#60a5fa','#fb923c','#f97316','#ef4444'];
 
-        // 获赞数图表
-        new Chart(document.getElementById('likesChart'), {
-            type: 'bar',
-            data: {
-                labels: accountData.labels,
-                datasets: [{
-                    data: accountData.likes,
-                    backgroundColor: [
-                        '#f472b6', '#ec4899', '#a78bfa', '#60a5fa', '#fb923c', '#f97316', '#ef4444'
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: chartOptions
-        });
+        function makeChart(id, data, colors, opts) {
+            new Chart(document.getElementById(id), { type: 'bar', data: { labels, datasets: [{ data, backgroundColor: colors, borderRadius: 8 }] }, options: opts || chartOptions });
+        }
 
-        // 作品数图表
-        new Chart(document.getElementById('videosChart'), {
-            type: 'bar',
-            data: {
-                labels: accountData.labels,
-                datasets: [{
-                    data: accountData.videos,
-                    backgroundColor: [
-                        '#34d399', '#10b981', '#a78bfa', '#60a5fa', '#fb923c', '#f472b6', '#f97316'
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: chartOptions
-        });
+        makeChart('fansChart', fansArr, COLORS_7);
+        makeChart('likesChart', likesArr, COLORS_7B);
+        makeChart('videosChart', videosArr, ['#34d399','#10b981','#a78bfa','#60a5fa','#fb923c','#f472b6','#f97316']);
+        makeChart('avgLikesChart', avgLikesArr, ['#fbbf24','#f59e0b','#a78bfa','#60a5fa','#fb923c','#f472b6','#f97316']);
 
-        // 平均点赞图表
-        new Chart(document.getElementById('avgLikesChart'), {
-            type: 'bar',
-            data: {
-                labels: accountData.labels,
-                datasets: [{
-                    data: accountData.avgLikes,
-                    backgroundColor: [
-                        '#fbbf24', '#f59e0b', '#a78bfa', '#60a5fa', '#fb923c', '#f472b6', '#f97316'
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: chartOptions
-        });
+        // 播放量图表（暂无数据）
+        const playsOpts = { ...chartOptions, plugins: { ...chartOptions.plugins, tooltip: { callbacks: { label: c => c.parsed.y + ' 万次' } } }, scales: { ...chartOptions.scales, y: { ...chartOptions.scales.y, ticks: { callback: v => v + '万' } } } };
+        makeChart('playsChart', [0,0,0,0,0,0,0], ['#11998e88','#38ef7d88','#a7f3d0','#d1fae5','#fb923c88','#f472b688','#f9731688'], playsOpts);
+        makeChart('avgPlaysChart', [0,0,0,0,0,0,0], ['#f7971e88','#ffd20088','#fed7aa','#fef3c7','#fb923c88','#f472b688','#f9731688'], playsOpts);
 
-        // 总播放量图表（单位：万次）
-        new Chart(document.getElementById('playsChart'), {
-            type: 'bar',
-            data: {
-                labels: accountData.labels,
-                datasets: [{
-                    data: accountData.plays,
-                    backgroundColor: [
-                        '#11998e', '#38ef7d88', '#a7f3d0', '#d1fae5', '#fb923c88', '#f472b688', '#f9731688'
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                ...chartOptions,
-                plugins: {
-                    ...chartOptions.plugins,
-                    tooltip: {
-                        callbacks: {
-                            label: ctx => `${ctx.parsed.y} 万次`
-                        }
-                    }
-                },
-                scales: {
-                    ...chartOptions.scales,
-                    y: {
-                        ...chartOptions.scales.y,
-                        ticks: {
-                            callback: val => val + '万'
-                        }
-                    }
-                }
-            }
-        });
-
-        // 均播放/篇图表（单位：万次）
-        new Chart(document.getElementById('avgPlaysChart'), {
-            type: 'bar',
-            data: {
-                labels: accountData.labels,
-                datasets: [{
-                    data: accountData.avgPlays,
-                    backgroundColor: [
-                        '#f7971e', '#ffd20088', '#fed7aa', '#fef3c7', '#fb923c88', '#f472b688', '#f9731688'
-                    ],
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                ...chartOptions,
-                plugins: {
-                    ...chartOptions.plugins,
-                    tooltip: {
-                        callbacks: {
-                            label: ctx => `${ctx.parsed.y} 万次`
-                        }
-                    }
-                },
-                scales: {
-                    ...chartOptions.scales,
-                    y: {
-                        ...chartOptions.scales.y,
-                        ticks: {
-                            callback: val => val + '万'
-                        }
-                    }
-                }
-            }
-        });
-
-        // 生成排名表格
-        const rankingData = [
-            { rank: 1, name: '具身情报局', fans: 574000, likes: 3983000, plays: 0, videos: 4, avg: 995750, avgPlays: 0, eng: 693.1, grade: 'S', trend: 'up' },
-            { rank: 2, name: '人形抖机灵', fans: 2017, likes: 217000, plays: 0, videos: 143, avg: 1517, avgPlays: 0, eng: 53.6, grade: 'S', trend: 'up' },
-            { rank: 3, name: '机圈BB机', fans: 1713, likes: 19000, plays: 0, videos: 100, avg: 190, avgPlays: 0, eng: 11.1, grade: 'B', trend: 'up' },
-            { rank: 4, name: 'AI热点圈', fans: 110, likes: 4682, plays: 0, videos: 15, avg: 312, avgPlays: 0, eng: 42.6, grade: 'C', trend: 'up' },
-            { rank: 5, name: '机你钛美', fans: 117, likes: 7053, plays: 0, videos: 46, avg: 153, avgPlays: 0, eng: 60.3, grade: 'B', trend: 'up' },
-            { rank: 6, name: '机圈哈机咪', fans: 18, likes: 693, plays: 0, videos: 37, avg: 19, avgPlays: 0, eng: 38.5, grade: 'C', trend: 'neutral' },
-            { rank: 7, name: '机圈速报', fans: 1, likes: 23, plays: 0, videos: 11, avg: 2, avgPlays: 0, eng: 2300, grade: 'C', trend: 'neutral' }
-        ];
+        // ========== 排名表（动态排序） ==========
+        const ranked = RAW_DATA.accounts.map((a, i) => ({
+            name: a.name, fans: a.fans, likes: a.likes, plays: 0, videos: a.videos,
+            avg: Math.round(a.likes / a.videos), avgPlays: 0, eng: engagementArr[i],
+            grade: gradesArr[i], trend: engagementArr[i] > 30 ? 'up' : 'neutral'
+        })).sort((a, b) => b.likes - a.likes).map((r, i) => ({ ...r, rank: i + 1 }));
 
         const tableBody = document.getElementById('rankingTable');
-        rankingData.forEach(row => {
+        ranked.forEach(row => {
             const tr = document.createElement('tr');
-            const trendIcon = row.trend === 'up' ? '↑' : row.trend === 'down' ? '↓' : '-';
-            const trendClass = row.trend === 'up' ? 'up' : row.trend === 'down' ? 'down' : 'neutral';
+            const trendIcon = row.trend === 'up' ? '↑' : '-';
+            const trendClass = row.trend === 'up' ? 'up' : 'neutral';
             tr.innerHTML = `
                 <td class="rank rank-${row.rank}">${row.rank}</td>
                 <td><strong>${row.name}</strong></td>
-                <td>${row.fans.toLocaleString()}</td>
-                <td>${row.likes.toLocaleString()}</td>
-                <td>${row.plays > 0 ? (row.plays >= 1 ? row.plays + '万' : (row.plays * 10000).toLocaleString()) : '<span style="color:#9ca3af">暂无</span>'}</td>
+                <td>${fmt(row.fans)}</td>
+                <td>${fmt(row.likes)}</td>
+                <td><span style="color:#9ca3af">暂无</span></td>
                 <td>${row.videos}</td>
                 <td>${row.avg.toLocaleString()}</td>
-                <td>${row.avgPlays > 0 ? row.avgPlays + '万' : '<span style="color:#9ca3af">暂无</span>'}</td>
+                <td><span style="color:#9ca3af">暂无</span></td>
                 <td>${row.eng}%</td>
                 <td><span class="grade-badge grade-${row.grade.toLowerCase()}">${row.grade}</span></td>
-                <td><span class="trend-indicator trend-${trendClass}">${trendIcon}</span></td>
-            `;
+                <td><span class="trend-indicator trend-${trendClass}">${trendIcon}</span></td>`;
             tableBody.appendChild(tr);
         });
 
-        // 自动化开关
+        // ========== 洞察文案（动态生成） ==========
+        function renderInsights() {
+            const topAccount = [...RAW_DATA.accounts].sort((a, b) => b.likes - a.likes)[0];
+            const ownAccounts = RAW_DATA.accounts.filter(a => a.type === 'own');
+            const ownTop = ownAccounts.sort((a, b) => b.likes - a.likes)[0];
+            const highEngLowFans = RAW_DATA.accounts.filter(a => a.fans < 1000 && engagementArr[RAW_DATA.accounts.indexOf(a)] > 30).sort((a, b) => b.likes - a.likes)[0];
+            const ownTopEng = engagementArr[RAW_DATA.accounts.indexOf(ownTop)];
+            const topEng = engagementArr[RAW_DATA.accounts.indexOf(topAccount)];
+            const highEngAvg = highEngLowFans ? Math.round(highEngLowFans.likes / highEngLowFans.videos) : 0;
+            const highEngVal = highEngLowFans ? engagementArr[RAW_DATA.accounts.indexOf(highEngLowFans)] : 0;
+
+            document.getElementById('insightsContainer').innerHTML = `
+                <div class="insight-item">
+                    <div class="insight-icon" style="background: #fef3c7;">🏆</div>
+                    <div class="insight-content">
+                        <h4>竞品标杆：${topAccount.name}</h4>
+                        <p><strong>${topAccount.name}</strong>以${fmt(topAccount.fans)}粉丝/${fmt(topAccount.likes)}获赞领跑，平均单篇点赞${fmt(Math.round(topAccount.likes / topAccount.videos))}，互动率${topEng}%。${topAccount.videos <= 10 ? '极致少而精策略值得深度研究——少而精，篇篇爆。' : '内容产出效率极高，建议对标其爆款结构。'}</p>
+                    </div>
+                </div>
+                ${highEngLowFans ? `
+                <div class="insight-item">
+                    <div class="insight-icon" style="background: #dbeafe;">🚀</div>
+                    <div class="insight-content">
+                        <h4>高赞低粉账号</h4>
+                        <p><strong>${highEngLowFans.name}</strong>仅${highEngLowFans.fans}粉丝但获赞${fmt(highEngLowFans.likes)}，互动率${highEngVal}%，说明内容质量不错但分发受限。建议分析其爆款选题，参考内容方向。</p>
+                    </div>
+                </div>` : ''}
+                <div class="insight-item">
+                    <div class="insight-icon" style="background: #d1fae5;">⚡</div>
+                    <div class="insight-content">
+                        <h4>自营矩阵现状</h4>
+                        <p><strong>${ownTop.name}</strong>以${fmt(ownTop.fans)}粉/${fmt(ownTop.likes)}赞领跑自营账号，互动率${ownTopEng}%。与竞品${topAccount.name}相比差距较大，建议对标其爆款结构进行内容升级。</p>
+                    </div>
+                </div>
+            `;
+        }
+        renderInsights();
+
+        // ========== 自动化开关 ==========
         let automationEnabled = true;
         function toggleAutomation() {
             automationEnabled = !automationEnabled;
@@ -1740,372 +1378,100 @@
 
         // 模拟数据更新动画
         setInterval(() => {
-            const dots = document.querySelectorAll('.dot');
-            dots.forEach(dot => {
-                dot.style.opacity = dot.style.opacity === '0.5' ? '1' : '0.5';
-            });
+            document.querySelectorAll('.dot').forEach(dot => { dot.style.opacity = dot.style.opacity === '0.5' ? '1' : '0.5'; });
         }, 1000);
 
-        // ========== 作品数据分析模块 ==========
-        
-        // 模拟作品数据（实际应从API获取）
-        const videosData = {
-            '人形抖机灵': {
-                latest: {
-                    title: '你以为vs实际上的机器人马拉松',
-                    likes: 31,
-                    shares: 1,
-                    comments: 4,
-                    collects: 1,
-                    date: '2026-04-14'
-                },
-                topShared: {
-                    title: '中日同一期机器人发展对比',
-                    likes: 61,
-                    shares: 3,
-                    comments: 3,
-                    collects: 39,
-                    date: '2026-04-11'
-                },
-                topPlays: [
-                    { title: '中日同一期机器人发展对比', likes: 61, shares: 3, comments: 3, collects: 39, date: '2026-04-11' },
-                    { title: '你以为vs实际上的机器人马拉松', likes: 31, shares: 1, comments: 4, collects: 1, date: '2026-04-14' },
-                    { title: 'ASIMO传奇延续 人形机器人的时代接力', likes: 26, shares: 0, comments: 0, collects: 10, date: '2026-04-10' }
-                ],
-                topLikes: [
-                    { title: '中日同一期机器人发展对比', likes: 61, shares: 3, comments: 3, collects: 39, date: '2026-04-11' },
-                    { title: '你以为vs实际上的机器人马拉松', likes: 31, shares: 1, comments: 4, collects: 1, date: '2026-04-14' },
-                    { title: 'ASIMO传奇延续 人形机器人的时代接力', likes: 26, shares: 0, comments: 0, collects: 10, date: '2026-04-10' }
-                ],
-                latestComments: [
-                    { videoTitle: '你以为vs实际上的机器人马拉松', comment: '评论4条（详见抖音）', likes: 4, user: '-' },
-                    { videoTitle: '中日同一期机器人发展对比', comment: '评论3条（详见抖音）', likes: 3, user: '-' },
-                    { videoTitle: 'ASIMO传奇延续', comment: '评论0条', likes: 0, user: '-' }
-                ]
-            },
-            '机圈BB机': {
-                latest: {
-                    title: '盘点！2026机器人马拉松参赛选手！',
-                    likes: 2620,
-                    shares: 658,
-                    comments: 190,
-                    collects: 831,
-                    date: '2026-04-15'
-                },
-                topShared: {
-                    title: '盘点！2026机器人马拉松参赛选手！',
-                    likes: 2620,
-                    shares: 658,
-                    comments: 190,
-                    collects: 831,
-                    date: '2026-04-15'
-                },
-                topPlays: [
-                    { title: '盘点！2026机器人马拉松参赛选手！', likes: 2620, shares: 658, comments: 190, collects: 831, date: '2026-04-15' },
-                    { title: '盘点！机器人马拉松夺冠大热门', likes: 1056, shares: 333, comments: 111, collects: 897, date: '2026-04-14' },
-                    { title: '机器人马拉松热门选手盘点！4.19巅峰对决', likes: 671, shares: 206, comments: 29, collects: 89, date: '2026-04-13' }
-                ],
-                topLikes: [
-                    { title: '盘点！2026机器人马拉松参赛选手！', likes: 2620, shares: 658, comments: 190, collects: 831, date: '2026-04-15' },
-                    { title: '盘点！机器人马拉松夺冠大热门', likes: 1056, shares: 333, comments: 111, collects: 897, date: '2026-04-14' },
-                    { title: '机器人马拉松热门选手盘点！4.19巅峰对决', likes: 671, shares: 206, comments: 29, collects: 89, date: '2026-04-13' }
-                ],
-                latestComments: [
-                    { videoTitle: '盘点！2026机器人马拉松参赛选手！', comment: '评论190条（详见抖音）', likes: 190, user: '-' },
-                    { videoTitle: '盘点！机器人马拉松夺冠大热门', comment: '评论111条（详见抖音）', likes: 111, user: '-' },
-                    { videoTitle: '机器人马拉松热门选手盘点！', comment: '评论29条（详见抖音）', likes: 29, user: '-' }
-                ]
-            },
-            '机你钛美': {
-                latest: {
-                    title: '在家就能吃土豆',
-                    likes: 11,
-                    shares: 0,
-                    comments: 1,
-                    collects: 5,
-                    date: '2026-04-15'
-                },
-                topShared: {
-                    title: '下班不基础',
-                    likes: 38,
-                    shares: 7,
-                    comments: 1,
-                    collects: 1,
-                    date: '2026-04-11'
-                },
-                topPlays: [
-                    { title: '看到机器人耕田，有点心疼老一辈', likes: 54, shares: 5, comments: 5, collects: 4, date: '2026-04-14' },
-                    { title: '下班不基础', likes: 38, shares: 7, comments: 1, collects: 1, date: '2026-04-11' },
-                    { title: '机器人也会自娱自乐了', likes: 9, shares: 0, comments: 1, collects: 3, date: '2026-04-10' }
-                ],
-                topLikes: [
-                    { title: '看到机器人耕田，有点心疼老一辈', likes: 54, shares: 5, comments: 5, collects: 4, date: '2026-04-14' },
-                    { title: '下班不基础', likes: 38, shares: 7, comments: 1, collects: 1, date: '2026-04-11' },
-                    { title: '在家就能吃土豆', likes: 11, shares: 0, comments: 1, collects: 5, date: '2026-04-15' }
-                ],
-                latestComments: [
-                    { videoTitle: '看到机器人耕田，有点心疼老一辈', comment: '评论5条（详见抖音）', likes: 5, user: '-' },
-                    { videoTitle: '在家就能吃土豆', comment: '评论1条（详见抖音）', likes: 1, user: '-' },
-                    { videoTitle: '下班不基础', comment: '评论1条（详见抖音）', likes: 1, user: '-' }
-                ]
-            },
-            '机圈哈机咪': {
-                latest: {
-                    title: '机器狗：我都不算人了怎么还得军训？',
-                    likes: 2,
-                    shares: 0,
-                    comments: 0,
-                    collects: 1,
-                    date: '2026-04-15'
-                },
-                topShared: {
-                    title: '丰田篮球机器人杀疯，詹姆斯都要失业？',
-                    likes: 3,
-                    shares: 2,
-                    comments: 0,
-                    collects: 0,
-                    date: '2026-04-13'
-                },
-                topPlays: [
-                    { title: '这波贪了应该留到春晚看的 机器人半马', likes: 9, shares: 0, comments: 3, collects: 1, date: '2026-04-14' },
-                    { title: '丰田篮球机器人杀疯，詹姆斯都要失业？', likes: 3, shares: 2, comments: 0, collects: 0, date: '2026-04-13' },
-                    { title: '机器人半马雷霆跑姿', likes: 5, shares: 1, comments: 0, collects: 0, date: '2026-04-15' }
-                ],
-                topLikes: [
-                    { title: '这波贪了应该留到春晚看的 机器人半马', likes: 9, shares: 0, comments: 3, collects: 1, date: '2026-04-14' },
-                    { title: '机器人半马雷霆跑姿', likes: 5, shares: 1, comments: 0, collects: 0, date: '2026-04-15' },
-                    { title: '丰田篮球机器人杀疯，詹姆斯都要失业？', likes: 3, shares: 2, comments: 0, collects: 0, date: '2026-04-13' }
-                ],
-                latestComments: [
-                    { videoTitle: '这波贪了应该留到春晚看的 机器人半马', comment: '评论3条（详见抖音）', likes: 3, user: '-' },
-                    { videoTitle: '机器狗军训', comment: '评论0条', likes: 0, user: '-' },
-                    { videoTitle: '机器人半马雷霆跑姿', comment: '评论0条', likes: 0, user: '-' }
-                ]
-            },
-            '机圈速报': {
-                latest: {
-                    title: '亦庄半马周日开跑 人机大战悬念拉满',
-                    likes: 1,
-                    shares: 0,
-                    comments: 0,
-                    collects: 0,
-                    date: '2026-04-15'
-                },
-                topShared: {
-                    title: '从"贴地"到"贴地飞行"',
-                    likes: 6,
-                    shares: 0,
-                    comments: 2,
-                    collects: 1,
-                    date: '2026-04-13'
-                },
-                topPlays: [
-                    { title: '亦庄半马周日开跑 人机大战悬念拉满', likes: 1, shares: 0, comments: 0, collects: 0, date: '2026-04-15' },
-                    { title: '从"贴地"到"贴地飞行"', likes: 6, shares: 0, comments: 2, collects: 1, date: '2026-04-13' },
-                    { title: '身高1.2米，手心会吹泡泡 这款"欢乐机器人"杀进美国了', likes: 0, shares: 0, comments: 0, collects: 0, date: '2026-04-15' }
-                ],
-                topLikes: [
-                    { title: '从"贴地"到"贴地飞行"', likes: 6, shares: 0, comments: 2, collects: 1, date: '2026-04-13' },
-                    { title: '亦庄半马周日开跑 人机大战悬念拉满', likes: 1, shares: 0, comments: 0, collects: 0, date: '2026-04-15' },
-                    { title: '比库里投的还准？ 丰田发布AI篮球机器人CUE7', likes: 0, shares: 0, comments: 0, collects: 0, date: '2026-04-13' }
-                ],
-                latestComments: [
-                    { videoTitle: '从"贴地"到"贴地飞行"', comment: '评论2条（详见抖音）', likes: 2, user: '-' },
-                    { videoTitle: '亦庄半马周日开跑', comment: '评论0条', likes: 0, user: '-' },
-                    { videoTitle: '欢乐机器人杀进美国了', comment: '评论0条', likes: 0, user: '-' }
-                ]
-            },
-            'AI热点圈': {
-                latest: {
-                    title: '月薪3万去内蒙草原给DeepSeek守机房',
-                    likes: 143,
-                    shares: 101,
-                    comments: 22,
-                    collects: 26,
-                    date: '2026-04-14'
-                },
-                topShared: {
-                    title: '月薪3万去内蒙草原给DeepSeek守机房',
-                    likes: 143,
-                    shares: 101,
-                    comments: 22,
-                    collects: 26,
-                    date: '2026-04-14'
-                },
-                topPlays: [
-                    { title: '月薪3万去内蒙草原给DeepSeek守机房', likes: 143, shares: 101, comments: 22, collects: 26, date: '2026-04-14' },
-                    { title: 'Meta内部卷疯了！烧Token正成为一种新的身份象征', likes: 21, shares: 2, comments: 2, collects: 2, date: '2026-04-11' },
-                    { title: '俞浩发飙 2亿招机器人首席科学家', likes: 20, shares: 0, comments: 3, collects: 1, date: '2026-04-10' }
-                ],
-                topLikes: [
-                    { title: '月薪3万去内蒙草原给DeepSeek守机房', likes: 143, shares: 101, comments: 22, collects: 26, date: '2026-04-14' },
-                    { title: 'Meta内部卷疯了！烧Token正成为一种新的身份象征', likes: 21, shares: 2, comments: 2, collects: 2, date: '2026-04-11' },
-                    { title: '谁说中国造不出好的机车/机器人', likes: 17, shares: 1, comments: 2, collects: 3, date: '2026-04-10' }
-                ],
-                latestComments: [
-                    { videoTitle: '月薪3万去内蒙草原给DeepSeek守机房', comment: '评论22条（详见抖音）', likes: 22, user: '-' },
-                    { videoTitle: 'Meta内部卷疯了！烧Token正成为一种新的身份象征', comment: '评论2条（详见抖音）', likes: 2, user: '-' },
-                    { videoTitle: '小米汽车密集引入多名特斯拉前高管', comment: '评论5条（详见抖音）', likes: 5, user: '-' }
-                ]
-            },
-            '具身情报局': {
-                latest: {
-                    title: '机器人跑半马，到底有啥用？',
-                    likes: 1050,
-                    shares: 53,
-                    comments: 48,
-                    collects: 59,
-                    date: '2026-04-14'
-                },
-                topShared: {
-                    title: '优必选年报深度剖析！谁才是真·机器人一哥？',
-                    likes: 5813,
-                    shares: 721,
-                    comments: 377,
-                    collects: 971,
-                    date: '2026-04-07'
-                },
-                topPlays: [
-                    { title: '优必选年报深度剖析！谁才是真·机器人一哥？', likes: 5813, shares: 721, comments: 377, collects: 971, date: '2026-04-07' },
-                    { title: '招股书背后，宇树的护城河到底在哪？', likes: 937, shares: 20, comments: 16, collects: 61, date: '2026-04-01' },
-                    { title: '机器人跑半马，到底有啥用？', likes: 1050, shares: 53, comments: 48, collects: 59, date: '2026-04-14' }
-                ],
-                topLikes: [
-                    { title: '优必选年报深度剖析！谁才是真·机器人一哥？', likes: 5813, shares: 721, comments: 377, collects: 971, date: '2026-04-07' },
-                    { title: '招股书背后，宇树的护城河到底在哪？', likes: 937, shares: 20, comments: 16, collects: 61, date: '2026-04-01' },
-                    { title: '机器人跑半马，到底有啥用？', likes: 1050, shares: 53, comments: 48, collects: 59, date: '2026-04-14' }
-                ],
-                latestComments: [
-                    { videoTitle: '优必选年报深度剖析！', comment: '评论377条（详见抖音）', likes: 377, user: '-' },
-                    { videoTitle: '机器人跑半马，到底有啥用？', comment: '评论48条（详见抖音）', likes: 48, user: '-' },
-                    { videoTitle: '招股书背后，宇树的护城河', comment: '评论16条（详见抖音）', likes: 16, user: '-' }
-                ]
-            }
-        };
+        // ========== 作品数据分析（从 RAW_DATA 派生） ==========
+        function buildVideosData() {
+            const vd = {};
+            RAW_DATA.accounts.forEach(acc => {
+                const vids = acc.latest_videos || [];
+                if (vids.length === 0) {
+                    vd[acc.name] = { latest: { title: '暂无数据', likes: 0, shares: 0, comments: 0, collects: 0, date: '-' }, topShared: { title: '暂无数据', likes: 0, shares: 0, comments: 0, collects: 0, date: '-' }, topPlays: [], topLikes: [], latestComments: [] };
+                    return;
+                }
+                const v = vids.map(vi => ({
+                    title: (vi.desc || '').split('#')[0].trim(),
+                    likes: vi.digg_count || 0,
+                    shares: vi.share_count || 0,
+                    comments: vi.comment_count || 0,
+                    collects: vi.collect_count || 0,
+                    date: (vi.create_time || '').slice(5)
+                }));
+                const byLikes = [...v].sort((a, b) => b.likes - a.likes);
+                const byShares = [...v].sort((a, b) => b.shares - a.shares);
+                vd[acc.name] = {
+                    latest: v[0],
+                    topShared: byShares[0],
+                    topPlays: byLikes.slice(0, 3),
+                    topLikes: byLikes.slice(0, 3),
+                    latestComments: v.slice(0, 3).map(vi => ({ videoTitle: vi.title, comment: `评论${vi.comments}条（详见抖音）`, likes: vi.comments, user: '-' }))
+                };
+            });
+            return vd;
+        }
+        const videosData = buildVideosData();
+
+        // ========== 动态渲染账号选择器 ==========
+        function renderAccountSelectors() {
+            ['shareAccountSelector','topPlaysAccountSelector','topLikesAccountSelector','commentAccountSelector'].forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.innerHTML = labels.map((name, i) => `<button class="account-btn${i === 0 ? ' active' : ''}" data-account="${i}">${name}</button>`).join('');
+            });
+        }
+        renderAccountSelectors();
 
         // 渲染转发冠军
         function renderShareChampion(accountName) {
             const data = videosData[accountName].topShared;
             const container = document.getElementById('shareChampionContainer');
-            const collectsStr = data.collects >= 10000 ? (data.collects / 10000).toFixed(1) + '万' : data.collects.toLocaleString();
-            container.innerHTML = `
-                <div class="share-champion">
-                    <div class="share-champion-header">
-                        <div class="share-champion-icon">🏆</div>
-                        <div>
-                            <div class="share-champion-title">转发冠军作品</div>
-                            <div style="font-size: 0.85em; color: #78350f; margin-top: 4px;">${data.title}</div>
-                        </div>
-                    </div>
-                    <div class="share-champion-stats">
-                        <div class="share-champion-stat">
-                            <div class="share-champion-stat-value">🔄 ${data.shares.toLocaleString()}</div>
-                            <div class="share-champion-stat-label">转发数</div>
-                        </div>
-                        <div class="share-champion-stat">
-                            <div class="share-champion-stat-value">❤️ ${data.likes.toLocaleString()}</div>
-                            <div class="share-champion-stat-label">点赞数</div>
-                        </div>
-                        <div class="share-champion-stat">
-                            <div class="share-champion-stat-value">⭐ ${collectsStr}</div>
-                            <div class="share-champion-stat-label">收藏数</div>
-                        </div>
-                        <div class="share-champion-stat">
-                            <div class="share-champion-stat-value">💬 ${data.comments.toLocaleString()}</div>
-                            <div class="share-champion-stat-label">评论数</div>
-                        </div>
-                        <div class="share-champion-stat">
-                            <div class="share-champion-stat-value">${data.date}</div>
-                            <div class="share-champion-stat-label">发布日期</div>
-                        </div>
-                    </div>
-                </div>
-            `;
+            const cStr = data.collects >= 10000 ? (data.collects / 10000).toFixed(1) + '万' : data.collects.toLocaleString();
+            container.innerHTML = `<div class="share-champion"><div class="share-champion-header"><div class="share-champion-icon">🏆</div><div><div class="share-champion-title">转发冠军作品</div><div style="font-size:0.85em;color:#78350f;margin-top:4px;">${data.title}</div></div></div><div class="share-champion-stats"><div class="share-champion-stat"><div class="share-champion-stat-value">🔄 ${data.shares.toLocaleString()}</div><div class="share-champion-stat-label">转发数</div></div><div class="share-champion-stat"><div class="share-champion-stat-value">❤️ ${data.likes.toLocaleString()}</div><div class="share-champion-stat-label">点赞数</div></div><div class="share-champion-stat"><div class="share-champion-stat-value">⭐ ${cStr}</div><div class="share-champion-stat-label">收藏数</div></div><div class="share-champion-stat"><div class="share-champion-stat-value">💬 ${data.comments.toLocaleString()}</div><div class="share-champion-stat-label">评论数</div></div><div class="share-champion-stat"><div class="share-champion-stat-value">${data.date}</div><div class="share-champion-stat-label">发布日期</div></div></div></div>`;
         }
 
         // 渲染TOP3点赞
         function renderTopLikes(accountName) {
             const list = document.getElementById('topLikesList');
-            const videos = videosData[accountName].topLikes;
-            list.innerHTML = videos.map((video, index) => {
-                const collectsStr = video.collects >= 10000 ? (video.collects / 10000).toFixed(1) + '万' : video.collects.toLocaleString();
-                return `
-                <div class="video-item">
-                    <div class="video-rank top${index + 1}">${index + 1}</div>
-                    <div class="video-info">
-                        <div class="video-title">${video.title}</div>
-                        <div class="video-stats">
-                            <span class="video-stat highlight">❤️ ${video.likes.toLocaleString()}</span>
-                            <span class="video-stat">🔄 ${video.shares.toLocaleString()}</span>
-                            <span class="video-stat" style="color:#11998e; font-weight:600;">⭐ ${collectsStr}</span>
-                            <span class="video-stat">💬 ${video.comments.toLocaleString()}</span>
-                            <span class="video-stat">📅 ${video.date}</span>
-                        </div>
-                    </div>
-                </div>
-            `}).join('');
+            list.innerHTML = videosData[accountName].topLikes.map((video, i) => {
+                const cStr = video.collects >= 10000 ? (video.collects / 10000).toFixed(1) + '万' : video.collects.toLocaleString();
+                return `<div class="video-item"><div class="video-rank top${i + 1}">${i + 1}</div><div class="video-info"><div class="video-title">${video.title}</div><div class="video-stats"><span class="video-stat highlight">❤️ ${video.likes.toLocaleString()}</span><span class="video-stat">🔄 ${video.shares.toLocaleString()}</span><span class="video-stat" style="color:#11998e;font-weight:600;">⭐ ${cStr}</span><span class="video-stat">💬 ${video.comments.toLocaleString()}</span><span class="video-stat">📅 ${video.date}</span></div></div></div>`;
+            }).join('');
         }
 
-        // 渲染TOP3互动（原播放量，改为按点赞排序）
+        // 渲染TOP3互动
         function renderTopPlays(accountName) {
             const list = document.getElementById('topPlaysList');
-            const videos = videosData[accountName].topPlays;
-            list.innerHTML = videos.map((video, index) => {
-                const collectsStr = video.collects >= 10000 ? (video.collects / 10000).toFixed(1) + '万' : video.collects.toLocaleString();
-                return `
-                <div class="top-plays-item">
-                    <div class="top-plays-rank rank${index + 1}">${index + 1}</div>
-                    <div class="top-plays-info">
-                        <div class="top-plays-title">${video.title}</div>
-                        <div class="top-plays-stats">
-                            <span class="top-plays-stat highlight">❤️ ${video.likes.toLocaleString()}</span>
-                            <span class="top-plays-stat">🔄 ${video.shares.toLocaleString()}</span>
-                            <span class="top-plays-stat" style="color:#11998e; font-weight:600;">⭐ ${collectsStr}</span>
-                            <span class="top-plays-stat">💬 ${video.comments.toLocaleString()}</span>
-                            <span class="top-plays-stat">📅 ${video.date}</span>
-                        </div>
-                    </div>
-                </div>
-            `}).join('');
+            list.innerHTML = videosData[accountName].topPlays.map((video, i) => {
+                const cStr = video.collects >= 10000 ? (video.collects / 10000).toFixed(1) + '万' : video.collects.toLocaleString();
+                return `<div class="top-plays-item"><div class="top-plays-rank rank${i + 1}">${i + 1}</div><div class="top-plays-info"><div class="top-plays-title">${video.title}</div><div class="top-plays-stats"><span class="top-plays-stat highlight">❤️ ${video.likes.toLocaleString()}</span><span class="top-plays-stat">🔄 ${video.shares.toLocaleString()}</span><span class="top-plays-stat" style="color:#11998e;font-weight:600;">⭐ ${cStr}</span><span class="top-plays-stat">💬 ${video.comments.toLocaleString()}</span><span class="top-plays-stat">📅 ${video.date}</span></div></div></div>`;
+            }).join('');
         }
 
         // 渲染最新评论
         function renderLatestComments(accountName) {
             const container = document.getElementById('latestCommentsList');
-            const comments = videosData[accountName].latestComments;
-            container.innerHTML = comments.map(item => `
-                <div class="comment-item">
-                    <div class="comment-video-title">📹 ${item.videoTitle}</div>
-                    <div class="comment-content">"${item.comment}"</div>
-                    <div class="comment-meta">
-                        <span>👤 ${item.user}</span>
-                        <span class="comment-likes">❤️ ${item.likes}</span>
-                    </div>
-                </div>
-            `).join('');
+            container.innerHTML = videosData[accountName].latestComments.map(item => `<div class="comment-item"><div class="comment-video-title">📹 ${item.videoTitle}</div><div class="comment-content">"${item.comment}"</div><div class="comment-meta"><span>👤 ${item.user}</span><span class="comment-likes">❤️ ${item.likes}</span></div></div>`).join('');
         }
 
-        // 初始化账号选择器
+        // 初始化账号选择器事件
         function initAccountSelector(selectorId, renderFn) {
             const selector = document.getElementById(selectorId);
-            const buttons = selector.querySelectorAll('.account-btn');
-            
-            buttons.forEach(btn => {
+            if (!selector) return;
+            selector.querySelectorAll('.account-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    buttons.forEach(b => b.classList.remove('active'));
+                    selector.querySelectorAll('.account-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    const accountName = accountData.labels[parseInt(btn.dataset.account)];
-                    renderFn(accountName);
+                    renderFn(labels[parseInt(btn.dataset.account)]);
                 });
             });
         }
 
         // 初始化所有模块
-        renderShareChampion('人形抖机灵');
-        renderTopLikes('人形抖机灵');
-        renderTopPlays('人形抖机灵');
-        renderLatestComments('人形抖机灵');
-
+        renderShareChampion(labels[0]);
+        renderTopLikes(labels[0]);
+        renderTopPlays(labels[0]);
+        renderLatestComments(labels[0]);
         initAccountSelector('shareAccountSelector', renderShareChampion);
         initAccountSelector('topLikesAccountSelector', renderTopLikes);
         initAccountSelector('topPlaysAccountSelector', renderTopPlays);
