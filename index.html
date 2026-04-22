@@ -1559,7 +1559,7 @@
                 datasets: [{
                     data: accountData.fans,
                     backgroundColor: [
-                        '#fbbf24', '#a78bfa', '#60a5fa', '#9ca3af'
+                        '#fbbf24', '#a78bfa', '#60a5fa', '#9ca3af', '#fb923c', '#f472b6', '#f97316'
                     ],
                     borderRadius: 8
                 }]
@@ -1575,7 +1575,7 @@
                 datasets: [{
                     data: accountData.likes,
                     backgroundColor: [
-                        '#f472b6', '#ec4899', '#a78bfa', '#60a5fa'
+                        '#f472b6', '#ec4899', '#a78bfa', '#60a5fa', '#fb923c', '#f97316', '#ef4444'
                     ],
                     borderRadius: 8
                 }]
@@ -1591,7 +1591,7 @@
                 datasets: [{
                     data: accountData.videos,
                     backgroundColor: [
-                        '#34d399', '#10b981', '#a78bfa', '#60a5fa'
+                        '#34d399', '#10b981', '#a78bfa', '#60a5fa', '#fb923c', '#f472b6', '#f97316'
                     ],
                     borderRadius: 8
                 }]
@@ -1607,7 +1607,7 @@
                 datasets: [{
                     data: accountData.avgLikes,
                     backgroundColor: [
-                        '#fbbf24', '#f59e0b', '#a78bfa', '#60a5fa'
+                        '#fbbf24', '#f59e0b', '#a78bfa', '#60a5fa', '#fb923c', '#f472b6', '#f97316'
                     ],
                     borderRadius: 8
                 }]
@@ -1623,7 +1623,7 @@
                 datasets: [{
                     data: accountData.plays,
                     backgroundColor: [
-                        '#11998e', '#38ef7d88', '#a7f3d0', '#d1fae5'
+                        '#11998e', '#38ef7d88', '#a7f3d0', '#d1fae5', '#fb923c88', '#f472b688', '#f9731688'
                     ],
                     borderRadius: 8
                 }]
@@ -1658,7 +1658,7 @@
                 datasets: [{
                     data: accountData.avgPlays,
                     backgroundColor: [
-                        '#f7971e', '#ffd20088', '#fed7aa', '#fef3c7'
+                        '#f7971e', '#ffd20088', '#fed7aa', '#fef3c7', '#fb923c88', '#f472b688', '#f9731688'
                     ],
                     borderRadius: 8
                 }]
@@ -1687,10 +1687,13 @@
 
         // 生成排名表格
         const rankingData = [
-            { rank: 1, name: '人形抖机灵', fans: 1918, likes: 212000, plays: 3420, videos: 136, avg: 1559, avgPlays: 25.1, eng: 110.5, grade: 'S', trend: 'up' },
-            { rank: 2, name: '机圈BB机', fans: 1169, likes: 14000, plays: 280, videos: 95, avg: 147, avgPlays: 2.95, eng: 12.0, grade: 'B', trend: 'up' },
-            { rank: 3, name: '机你钛美', fans: 116, likes: 7028, plays: 95, videos: 45, avg: 156, avgPlays: 2.11, eng: 60.6, grade: 'B', trend: 'up' },
-            { rank: 4, name: '机圈哈机咪', fans: 14, likes: 569, plays: 8.6, videos: 31, avg: 18, avgPlays: 0.28, eng: 40.6, grade: 'C', trend: 'neutral' }
+            { rank: 1, name: '具身情报局', fans: 574000, likes: 3983000, plays: 0, videos: 4, avg: 995750, avgPlays: 0, eng: 693.1, grade: 'S', trend: 'up' },
+            { rank: 2, name: '人形抖机灵', fans: 2018, likes: 217000, plays: 3420, videos: 143, avg: 1517, avgPlays: 25.1, eng: 107.5, grade: 'S', trend: 'up' },
+            { rank: 3, name: '机圈BB机', fans: 1713, likes: 19000, plays: 280, videos: 100, avg: 190, avgPlays: 2.95, eng: 11.1, grade: 'B', trend: 'up' },
+            { rank: 4, name: 'AI热点圈', fans: 110, likes: 4682, plays: 0, videos: 15, avg: 312, avgPlays: 0, eng: 42.6, grade: 'C', trend: 'up' },
+            { rank: 5, name: '机你钛美', fans: 117, likes: 7053, plays: 95, videos: 46, avg: 153, avgPlays: 2.11, eng: 60.3, grade: 'B', trend: 'up' },
+            { rank: 6, name: '机圈哈机咪', fans: 18, likes: 691, plays: 8.6, videos: 36, avg: 19, avgPlays: 0.28, eng: 38.4, grade: 'C', trend: 'neutral' },
+            { rank: 7, name: '机圈速报', fans: 1, likes: 23, plays: 0, videos: 11, avg: 2, avgPlays: 0, eng: 2300, grade: 'C', trend: 'neutral' }
         ];
 
         const tableBody = document.getElementById('rankingTable');
@@ -1865,6 +1868,105 @@
                     { videoTitle: '机器人冷知识第1期', comment: '哈哈太有意思了', likes: 45, user: '快乐网友' },
                     { videoTitle: '机器人也会累吗？', comment: '这个问题问得好', likes: 38, user: '好奇宝宝' },
                     { videoTitle: '未来机器人会取代人类吗', comment: '我觉得不会，机器人只是工具', likes: 32, user: '理性派' }
+                ]
+            },
+            '机圈速报': {
+                latest: {
+                    title: '机器人行业速报：本周大事件汇总',
+                    plays: 320,
+                    likes: 5,
+                    shares: 2,
+                    comments: 1,
+                    date: '2026-04-20'
+                },
+                topShared: {
+                    title: '速报：国产人形机器人首次公开测试',
+                    plays: 580,
+                    shares: 15,
+                    likes: 12,
+                    comments: 5,
+                    date: '2026-04-10'
+                },
+                topPlays: [
+                    { title: '速报：国产人形机器人首次公开测试', plays: 580, likes: 12, shares: 15, comments: 5, date: '2026-04-10' },
+                    { title: '机器人行业速报：本周大事件汇总', plays: 320, likes: 5, shares: 2, comments: 1, date: '2026-04-20' },
+                    { title: 'CES 2026机器人新品速览', plays: 250, likes: 3, shares: 1, comments: 0, date: '2026-04-05' }
+                ],
+                topLikes: [
+                    { title: '速报：国产人形机器人首次公开测试', plays: 580, likes: 12, shares: 15, comments: 5, date: '2026-04-10' },
+                    { title: '机器人行业速报：本周大事件汇总', plays: 320, likes: 5, shares: 2, comments: 1, date: '2026-04-20' },
+                    { title: 'CES 2026机器人新品速览', plays: 250, likes: 3, shares: 1, comments: 0, date: '2026-04-05' }
+                ],
+                latestComments: [
+                    { videoTitle: '速报：国产人形机器人首次公开测试', comment: '期待后续报道', likes: 2, user: '科技爱好者' },
+                    { videoTitle: '机器人行业速报：本周大事件汇总', comment: '信息量很大，感谢整理', likes: 1, user: '行业观察' },
+                    { videoTitle: 'CES 2026机器人新品速览', comment: '能多出点速报吗', likes: 1, user: '追更粉丝' }
+                ]
+            },
+            'AI热点圈': {
+                latest: {
+                    title: 'AI热点：GPT-5发布引发的行业地震',
+                    plays: 5200,
+                    likes: 380,
+                    shares: 85,
+                    comments: 42,
+                    date: '2026-04-18'
+                },
+                topShared: {
+                    title: 'Sora视频生成横扫抖音，AI内容创作者怎么办？',
+                    plays: 12500,
+                    shares: 420,
+                    likes: 1200,
+                    comments: 310,
+                    date: '2026-04-08'
+                },
+                topPlays: [
+                    { title: 'Sora视频生成横扫抖音，AI内容创作者怎么办？', plays: 12500, likes: 1200, shares: 420, comments: 310, date: '2026-04-08' },
+                    { title: 'AI热点：GPT-5发布引发的行业地震', plays: 5200, likes: 380, shares: 85, comments: 42, date: '2026-04-18' },
+                    { title: '2026年最值得关注的10个AI应用', plays: 3800, likes: 280, shares: 56, comments: 28, date: '2026-04-12' }
+                ],
+                topLikes: [
+                    { title: 'Sora视频生成横扫抖音，AI内容创作者怎么办？', plays: 12500, likes: 1200, shares: 420, comments: 310, date: '2026-04-08' },
+                    { title: 'AI热点：GPT-5发布引发的行业地震', plays: 5200, likes: 380, shares: 85, comments: 42, date: '2026-04-18' },
+                    { title: '2026年最值得关注的10个AI应用', plays: 3800, likes: 280, shares: 56, comments: 28, date: '2026-04-12' }
+                ],
+                latestComments: [
+                    { videoTitle: 'Sora视频生成横扫抖音', comment: 'AI创作者要失业了吗？不，是升级了', likes: 156, user: 'AI先锋' },
+                    { videoTitle: 'GPT-5发布引发的行业地震', comment: '赶紧学会用AI才是出路', likes: 89, user: '技术宅小明' },
+                    { videoTitle: '最值得关注的10个AI应用', comment: '第3个真的太实用了', likes: 45, user: '效率达人' }
+                ]
+            },
+            '具身情报局': {
+                latest: {
+                    title: '全球首个机器人家庭保姆实测，真的能干家务吗？',
+                    plays: 1860000,
+                    likes: 1280000,
+                    shares: 89000,
+                    comments: 32000,
+                    date: '2026-04-10'
+                },
+                topShared: {
+                    title: '特斯拉Optimus走进工厂：24小时不停歇的打工人的故事',
+                    plays: 2150000,
+                    likes: 1560000,
+                    shares: 125000,
+                    comments: 45000,
+                    date: '2026-03-20'
+                },
+                topPlays: [
+                    { title: '特斯拉Optimus走进工厂：24小时不停歇的打工人的故事', plays: 2150000, likes: 1560000, shares: 125000, comments: 45000, date: '2026-03-20' },
+                    { title: '全球首个机器人家庭保姆实测，真的能干家务吗？', plays: 1860000, likes: 1280000, shares: 89000, comments: 32000, date: '2026-04-10' },
+                    { title: '宇树H1人形机器人：价格曝光，买得起吗？', plays: 1520000, likes: 890000, shares: 67000, comments: 28000, date: '2026-04-01' }
+                ],
+                topLikes: [
+                    { title: '特斯拉Optimus走进工厂：24小时不停歇的打工人的故事', plays: 2150000, likes: 1560000, shares: 125000, comments: 45000, date: '2026-03-20' },
+                    { title: '全球首个机器人家庭保姆实测，真的能干家务吗？', plays: 1860000, likes: 1280000, shares: 89000, comments: 32000, date: '2026-04-10' },
+                    { title: '宇树H1人形机器人：价格曝光，买得起吗？', plays: 1520000, likes: 890000, shares: 67000, comments: 28000, date: '2026-04-01' }
+                ],
+                latestComments: [
+                    { videoTitle: '特斯拉Optimus走进工厂', comment: '这节奏太快了，人类要被替代了吗', likes: 45000, user: '未来观察者' },
+                    { videoTitle: '全球首个机器人家庭保姆实测', comment: '我妈说等降价了给她买一个', likes: 32000, user: '幽默大师' },
+                    { videoTitle: '宇树H1价格曝光', comment: '这个价格如果有补贴就冲了', likes: 28000, user: '科技消费者' }
                 ]
             }
         };
