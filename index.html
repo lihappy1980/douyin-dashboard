@@ -1168,14 +1168,36 @@
         const likesArr = RAW_DATA.accounts.map(a => a.likes);
         const videosArr = RAW_DATA.accounts.map(a => a.videos);
         const avgLikesArr = RAW_DATA.accounts.map(a => Math.round(a.likes / a.videos));
-        const engagementArr = RAW_DATA.accounts.map(a => a.fans > 0 ? parseFloat(((a.likes / a.fans) * 100).toFixed(1)) : 0);
+        // 预先计算粉丝/点赞排名，用于卡片emoji
+        const topFansIdx = fansArr.indexOf(Math.max(...fansArr));
+        const lowestFansIdx = fansArr.indexOf(Math.min(...fansArr));
+        // 互动率 = 近5条作品平均互动（点赞+评论+分享+收藏）/ 粉丝 × 100%
+        const engagementArr = RAW_DATA.accounts.map(a => {
+            if (a.fans <= 0 || !a.latest_videos || a.latest_videos.length === 0) return 0;
+            const recent = a.latest_videos.slice(0, 5);
+            const totalEng = recent.reduce((sum, v) => sum + (v.digg_count || 0) + (v.comment_count || 0) + (v.share_count || 0) + (v.collect_count || 0), 0);
+            return parseFloat(((totalEng / recent.length / a.fans) * 100).toFixed(1));
+        });
 
+        // 综合评分 = (粉丝分×0.4 + 互动分×0.4 + 内容分×0.2)，映射到 S/A/B/C
         function getGrade(idx) {
-            const eng = engagementArr[idx];
             const fans = fansArr[idx];
-            if (eng > 500 || fans > 100000) return 'S';
-            if (eng > 50 || fans > 1000) return eng > 100 ? 'S' : 'B';
-            if (eng > 30) return 'B';
+            const eng = engagementArr[idx];
+            const videos = videosArr[idx];
+            const avgLikes = avgLikesArr[idx];
+
+            // 粉丝分：1万粉=10分，50万粉=50分，上限100
+            const fansScore = Math.min(100, Math.log10(fans + 1) * 20);
+            // 互动分：10%=10分，50%=50分，上限100
+            const engScore = Math.min(100, eng * 10);
+            // 内容分：均点赞500=10分，5000=50分，上限100
+            const contentScore = Math.min(100, Math.log10(avgLikes + 1) * 30);
+
+            const total = fansScore * 0.4 + engScore * 0.4 + contentScore * 0.2;
+
+            if (total >= 70) return 'S';
+            if (total >= 40) return 'A';
+            if (total >= 15) return 'B';
             return 'C';
         }
         const gradesArr = RAW_DATA.accounts.map((_, i) => getGrade(i));
@@ -1203,7 +1225,7 @@
                 const gradeLabel = grade === 'S' && fansArr[idx] > 100000 ? 'S+级' : grade + '级';
                 const avg = avgLikesArr[idx];
                 const eng = engagementArr[idx];
-                const engColor = eng > 100 ? 'success' : eng > 30 ? 'primary' : '';
+                const engColor = eng > 10 ? 'success' : eng > 5 ? 'primary' : '';
                 const engTag = engColor || 'warning';
                 const videos = acc.latest_videos || [];
                 const latest = videos.length > 0 ? videos[0] : null;
@@ -1217,7 +1239,7 @@
                 <div class="card account-card ${gradeClass}-grade">
                     <div class="account-header">
                         <div>
-                            <div class="account-name">${idx === 0 ? '🥇 ' : idx === labels.length - 1 ? '🏆 ' : ''}${acc.name}</div>
+                            <div class="account-name">${idx === topFansIdx ? '🥇 ' : idx === lowestFansIdx ? '🏆 ' : ''}${acc.name}</div>
                             <span class="account-id">抖音号: ${acc.douyin_id}</span>
                         </div>
                         <span class="grade-badge grade-${gradeClass}">${gradeLabel}</span>
@@ -1306,7 +1328,7 @@
         const ranked = RAW_DATA.accounts.map((a, i) => ({
             name: a.name, fans: a.fans, likes: a.likes, plays: 0, videos: a.videos,
             avg: Math.round(a.likes / a.videos), avgPlays: 0, eng: engagementArr[i],
-            grade: gradesArr[i], trend: engagementArr[i] > 30 ? 'up' : 'neutral'
+            grade: gradesArr[i], trend: engagementArr[i] > 5 ? 'up' : 'neutral'
         })).sort((a, b) => b.likes - a.likes).map((r, i) => ({ ...r, rank: i + 1 }));
 
         const tableBody = document.getElementById('rankingTable');
@@ -1334,7 +1356,7 @@
             const topAccount = [...RAW_DATA.accounts].sort((a, b) => b.likes - a.likes)[0];
             const ownAccounts = RAW_DATA.accounts.filter(a => a.type === 'own');
             const ownTop = ownAccounts.sort((a, b) => b.likes - a.likes)[0];
-            const highEngLowFans = RAW_DATA.accounts.filter(a => a.fans < 1000 && engagementArr[RAW_DATA.accounts.indexOf(a)] > 30).sort((a, b) => b.likes - a.likes)[0];
+            const highEngLowFans = RAW_DATA.accounts.filter(a => a.fans < 1000 && engagementArr[RAW_DATA.accounts.indexOf(a)] > 5).sort((a, b) => b.likes - a.likes)[0];
             const ownTopEng = engagementArr[RAW_DATA.accounts.indexOf(ownTop)];
             const topEng = engagementArr[RAW_DATA.accounts.indexOf(topAccount)];
             const highEngAvg = highEngLowFans ? Math.round(highEngLowFans.likes / highEngLowFans.videos) : 0;
