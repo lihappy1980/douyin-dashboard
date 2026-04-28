@@ -290,13 +290,138 @@
             margin-bottom: 6px;
         }
         
-        .insight-content p {
+.insight-content p {
             font-size: 0.9em;
             color: #6b7280;
             line-height: 1.5;
         }
-        
-        /* 全宽卡片 */
+
+        /* ===== 评分说明区 ===== */
+        .methodology-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 8px;
+        }
+
+        .methodology-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .method-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .method-label {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .method-weight {
+            font-size: 0.8em;
+            color: #9ca3af;
+            font-weight: 400;
+            margin-left: 6px;
+        }
+
+        .method-formula {
+            font-family: 'Courier New', monospace;
+            font-size: 0.78em;
+            color: #6366f1;
+            background: #eef2ff;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .method-table {
+            font-size: 0.78em;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+
+        .method-table div {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+        }
+
+        .method-table div span:first-child {
+            color: #6b7280;
+        }
+
+        .method-note {
+            font-size: 0.75em;
+            color: #9ca3af;
+            line-height: 1.4;
+        }
+
+        .methodology-grade-table {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+        }
+
+        .grade-section-title {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .grade-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82em;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+        }
+
+        .grade-row span:first-child {
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+
+        .grade-row span:last-child {
+            color: #6b7280;
+        }
+
+        .grade-ss-row { background: #fdf2f8; color: #be185d; }
+        .grade-s-row  { background: #fffbeb; color: #92400e; }
+        .grade-a-row  { background: #eff6ff; color: #1e40af; }
+        .grade-b-row  { background: #f5f3ff; color: #5b21b6; }
+        .grade-c-row  { background: #fff7ed; color: #9a3412; }
+        .grade-d-row  { background: #f9fafb; color: #6b7280; }
+
+        .methodology-formula-note {
+            font-size: 0.88em;
+            color: #374151;
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-align: center;
+        }
+
         .full-width {
             grid-column: 1 / -1;
         }
@@ -1025,6 +1150,9 @@
                 <div id="insightsContainer">
                     <!-- 由 renderInsights() 动态生成 -->
                 </div>
+                <div id="methodologyContainer">
+                    <!-- 由 renderMethodology() 动态生成 -->
+                </div>
             </div>
 
             <div class="card">
@@ -1202,21 +1330,41 @@
             return Math.round(total / recent.length);
         });
 
+        // ================================================
         // 综合评分：4维各25%，映射到 SS/S/A/B/C/D 六档
+        // ================================================
         function getGrade(idx) {
             const fans = fansArr[idx];
             const avgLikes = avgLikesArr[idx];
             const videos = videosArr[idx];
-            // 粉丝规模分：log10增长，10粉≈2分，100粉≈4分，1万粉≈10分，10万粉≈12分，50万≈13.7分
-            const fansScore = Math.min(100, Math.log10(fans + 1) * 13);
-            // 内容质量分：均点赞，10赞≈2分，100赞≈4分，1000赞≈6分，5000赞≈8分，5万赞≈10分
-            const contentScore = Math.min(100, Math.log10(avgLikes + 1) * 22);
-            // 互动综合分：全互动率×100，1%=100分，5%=100分（上限）
-            const engScore = Math.min(100, engArr[idx] * 20);
-            // 创作活跃分：作品数，5作≈3分，30作≈6分，100作≈8分，500作≈10分
-            const actScore = Math.min(100, Math.log10(videos + 1) * 48);
+            const eng = engArr[idx];
 
-            const total = fansScore * 0.25 + contentScore * 0.25 + engScore * 0.25 + actScore * 0.25;
+            // 【粉丝规模分】权重30% — 考虑天花板和稳定性
+            // 公式：min(100, log10(粉丝+1) × 17)
+            // 效果：10粉≈2分 | 100粉≈3.4分 | 1000粉≈5.1分 | 1万粉≈6.8分 | 10万粉≈8.5分 | 50万粉≈10.4分 | 100万粉≈11分
+            const fansScore = Math.min(100, Math.log10(fans + 1) * 17);
+
+            // 【内容质量分】权重30% — 用均点赞绝对值衡量
+            // 公式：min(100, log10(均点赞+1) × 33)
+            // 效果：10赞≈5分 | 100赞≈6.6分 | 500赞≈8.3分 | 1000赞≈9分 | 5000赞≈10.7分 | 5万赞≈12.6分
+            const contentScore = Math.min(100, Math.log10(avgLikes + 1) * 33);
+
+            // 【粉丝互动分】权重25% — 考量粉丝粘性，排除低粉统计异常
+            // 公式：低粉账号（<1000）互动分受上限保护，防止小号靠单条爆款刷分
+            // <1000粉：eng × 40，上限50分（30%互动=满分）
+            // <1万粉：eng × 12，上限60分（5%互动=满分）
+            // <10万粉：eng × 8，上限80分（10%互动=满分）
+            // ≥10万粉：eng × 6，100分（≈17%互动=满分）
+            let engMultiplier = fans < 1000 ? 40 : fans < 10000 ? 12 : fans < 100000 ? 8 : 6;
+            let engCap = fans < 1000 ? 50 : fans < 10000 ? 60 : fans < 100000 ? 80 : 100;
+            const engScore = Math.min(engCap, eng * engMultiplier);
+
+            // 【创作活跃分】权重15% — 用作品总数考量持续输出能力
+            // 公式：min(100, log10(作品数+1) × 62)
+            // 效果：3作≈5分 | 10作≈7分 | 30作≈8.6分 | 100作≈10分 | 500作≈11.8分
+            const actScore = Math.min(100, Math.log10(videos + 1) * 62);
+
+            const total = fansScore * 0.30 + contentScore * 0.30 + engScore * 0.25 + actScore * 0.15;
 
             if (total >= 80) return 'SS';
             if (total >= 65) return 'S';
@@ -1417,6 +1565,73 @@
             `;
         }
         renderInsights();
+
+        // ========== 评分说明（V4 评分体系） ==========
+        function renderMethodology() {
+            document.getElementById('methodologyContainer').innerHTML = `
+                <div class="methodology-card">
+                    <div class="methodology-title">📐 综合评分体系说明</div>
+                    <div class="methodology-grid">
+                        <div class="method-item">
+                            <div class="method-label">🏅 粉丝规模分 <span class="method-weight">权重30%</span></div>
+                            <div class="method-formula">min(100, log₁₀(粉丝数+1) × 17)</div>
+                            <div class="method-table">
+                                <div><span>100粉</span><span>≈3分</span></div>
+                                <div><span>1万粉</span><span>≈7分</span></div>
+                                <div><span>10万粉</span><span>≈9分</span></div>
+                                <div><span>50万粉</span><span>≈10分</span></div>
+                            </div>
+                            <div class="method-note">用对数压缩增长曲线，10万粉账号和50万粉账号差距合理（约1分），不会因规模差距过大导致评分两极化</div>
+                        </div>
+                        <div class="method-item">
+                            <div class="method-label">📌 内容质量分 <span class="method-weight">权重30%</span></div>
+                            <div class="method-formula">min(100, log₁₀(均点赞+1) × 33)</div>
+                            <div class="method-table">
+                                <div><span>100赞/篇</span><span>≈7分</span></div>
+                                <div><span>500赞/篇</span><span>≈8分</span></div>
+                                <div><span>1000赞/篇</span><span>≈9分</span></div>
+                                <div><span>1万赞/篇</span><span>≈11分</span></div>
+                            </div>
+                            <div class="method-note">均点赞=总获赞÷作品数，纯内容爆款能力的客观衡量，与粉丝规模脱钩</div>
+                        </div>
+                        <div class="method-item">
+                            <div class="method-label">💬 粉丝互动分 <span class="method-weight">权重25%</span></div>
+                            <div class="method-formula">min(上限, 全互动率 × 系数) — 系数按粉丝规模分段</div>
+                            <div class="method-table">
+                                <div><span>&lt;1000粉</span><span>上限50分（防止低粉刷分）</span></div>
+                                <div><span>千~万粉</span><span>上限60分</span></div>
+                                <div><span>万~10万粉</span><span>上限80分</span></div>
+                                <div><span>≥10万粉</span><span>上限100分</span></div>
+                            </div>
+                            <div class="method-note">全互动率=近5条(点赞+评论+分享+收藏)÷粉丝。低粉账号设置上限，防止单条爆款使分数虚高；大账号正常计分，5%全互动率=40分</div>
+                        </div>
+                        <div class="method-item">
+                            <div class="method-label">✏️ 创作活跃分 <span class="method-weight">权重15%</span></div>
+                            <div class="method-formula">min(100, log₁₀(作品数+1) × 62)</div>
+                            <div class="method-table">
+                                <div><span>5作</span><span>≈7分</span></div>
+                                <div><span>30作</span><span>≈9分</span></div>
+                                <div><span>100作</span><span>≈10分</span></div>
+                            </div>
+                            <div class="method-note">考量持续输出能力，log曲线防止高产量账号因作品数量优势过大</div>
+                        </div>
+                    </div>
+                    <div class="methodology-grade-table">
+                        <div class="grade-section-title">📊 六档评级阈值</div>
+                        <div class="grade-row grade-ss-row"><span>SS ≥ 80分</span><span>标杆级：粉丝规模与内容质量双优</span></div>
+                        <div class="grade-row grade-s-row"><span>S ≥ 65分</span><span>优质级：至少两项指标突出</span></div>
+                        <div class="grade-row grade-a-row"><span>A ≥ 50分</span><span>良好级：有明显长板，短板可提升</span></div>
+                        <div class="grade-row grade-b-row"><span>B ≥ 35分</span><span>正常级：有基础数据，需补强互动</span></div>
+                        <div class="grade-row grade-c-row"><span>C ≥ 20分</span><span>起步级：数据积累初期</span></div>
+                        <div class="grade-row grade-d-row"><span>D &lt; 20分</span><span>冷启动：需系统性运营</span></div>
+                    </div>
+                    <div class="methodology-formula-note">
+                        <strong>综合评分 =</strong> 粉丝规模分×0.30 + 内容质量分×0.30 + 粉丝互动分×0.25 + 创作活跃分×0.15
+                    </div>
+                </div>
+            `;
+        }
+        renderMethodology();
 
         // ========== 自动化开关 ==========
         let automationEnabled = true;
