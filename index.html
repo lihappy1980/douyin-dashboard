@@ -118,10 +118,12 @@
             border-left: 4px solid;
         }
         
+        .account-card.ss-grade { border-left-color: #f43f5e; }
         .account-card.s-grade { border-left-color: #fbbf24; }
         .account-card.a-grade { border-left-color: #60a5fa; }
         .account-card.b-grade { border-left-color: #a78bfa; }
-        .account-card.c-grade { border-left-color: #9ca3af; }
+        .account-card.c-grade { border-left-color: #f97316; }
+        .account-card.d-grade { border-left-color: #9ca3af; }
         
         .account-header {
             display: flex;
@@ -151,10 +153,12 @@
             font-size: 0.85em;
         }
         
+        .grade-ss { background: linear-gradient(135deg, #f43f5e, #ec4899); color: white; }
         .grade-s { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: white; }
         .grade-a { background: linear-gradient(135deg, #60a5fa, #3b82f6); color: white; }
         .grade-b { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; }
-        .grade-c { background: linear-gradient(135deg, #9ca3af, #6b7280); color: white; }
+        .grade-c { background: linear-gradient(135deg, #f97316, #ea580c); color: white; }
+        .grade-d { background: linear-gradient(135deg, #9ca3af, #6b7280); color: white; }
         
         .metrics-grid {
             display: grid;
@@ -914,11 +918,11 @@
                             <th>账号名称</th>
                             <th>粉丝数</th>
                             <th>获赞数</th>
-                            <th>总播放量</th>
                             <th>作品数</th>
-                            <th>平均点赞</th>
-                            <th>均播放/篇</th>
-                            <th>互动率</th>
+                            <th>均点赞</th>
+                            <th>均评论/篇</th>
+                            <th>均分享/篇</th>
+                            <th>全互动率</th>
                             <th>综合评分</th>
                             <th>趋势</th>
                         </tr>
@@ -1171,39 +1175,60 @@
         // 预先计算粉丝/点赞排名，用于卡片emoji
         const topFansIdx = fansArr.indexOf(Math.max(...fansArr));
         const lowestFansIdx = fansArr.indexOf(Math.min(...fansArr));
-        // 互动率 = 近5条作品平均互动（点赞+评论+分享+收藏）/ 粉丝 × 100%
-        const engagementArr = RAW_DATA.accounts.map(a => {
+        // 互动率 = 近5条作品平均全互动（点赞+评论+分享+收藏）/ 粉丝 × 100%
+        // engArr: 全互动率； engLikeArr: 仅点赞互动率（用于展示）
+        const engArr = RAW_DATA.accounts.map(a => {
             if (a.fans <= 0 || !a.latest_videos || a.latest_videos.length === 0) return 0;
             const recent = a.latest_videos.slice(0, 5);
             const totalEng = recent.reduce((sum, v) => sum + (v.digg_count || 0) + (v.comment_count || 0) + (v.share_count || 0) + (v.collect_count || 0), 0);
             return parseFloat(((totalEng / recent.length / a.fans) * 100).toFixed(1));
         });
+        const engLikeArr = RAW_DATA.accounts.map(a => {
+            if (a.fans <= 0 || !a.latest_videos || a.latest_videos.length === 0) return 0;
+            const recent = a.latest_videos.slice(0, 5);
+            const totalLikes = recent.reduce((sum, v) => sum + (v.digg_count || 0), 0);
+            return parseFloat(((totalLikes / recent.length / a.fans) * 100).toFixed(1));
+        });
+        const commentArr = RAW_DATA.accounts.map(a => {
+            if (a.fans <= 0 || !a.latest_videos || a.latest_videos.length === 0) return 0;
+            const recent = a.latest_videos.slice(0, 5);
+            const total = recent.reduce((sum, v) => sum + (v.comment_count || 0), 0);
+            return Math.round(total / recent.length);
+        });
+        const shareArr = RAW_DATA.accounts.map(a => {
+            if (a.fans <= 0 || !a.latest_videos || a.latest_videos.length === 0) return 0;
+            const recent = a.latest_videos.slice(0, 5);
+            const total = recent.reduce((sum, v) => sum + (v.share_count || 0), 0);
+            return Math.round(total / recent.length);
+        });
 
-        // 综合评分 = (粉丝分×0.4 + 互动分×0.4 + 内容分×0.2)，映射到 S/A/B/C
+        // 综合评分：4维各25%，映射到 SS/S/A/B/C/D 六档
         function getGrade(idx) {
             const fans = fansArr[idx];
-            const eng = engagementArr[idx];
-            const videos = videosArr[idx];
             const avgLikes = avgLikesArr[idx];
+            const videos = videosArr[idx];
+            // 粉丝规模分：log10增长，10粉≈2分，100粉≈4分，1万粉≈10分，10万粉≈12分，50万≈13.7分
+            const fansScore = Math.min(100, Math.log10(fans + 1) * 13);
+            // 内容质量分：均点赞，10赞≈2分，100赞≈4分，1000赞≈6分，5000赞≈8分，5万赞≈10分
+            const contentScore = Math.min(100, Math.log10(avgLikes + 1) * 22);
+            // 互动综合分：全互动率×100，1%=100分，5%=100分（上限）
+            const engScore = Math.min(100, engArr[idx] * 20);
+            // 创作活跃分：作品数，5作≈3分，30作≈6分，100作≈8分，500作≈10分
+            const actScore = Math.min(100, Math.log10(videos + 1) * 48);
 
-            // 粉丝分：1万粉=10分，50万粉=50分，上限100
-            const fansScore = Math.min(100, Math.log10(fans + 1) * 20);
-            // 互动分：10%=10分，50%=50分，上限100
-            const engScore = Math.min(100, eng * 10);
-            // 内容分：均点赞500=10分，5000=50分，上限100
-            const contentScore = Math.min(100, Math.log10(avgLikes + 1) * 30);
+            const total = fansScore * 0.25 + contentScore * 0.25 + engScore * 0.25 + actScore * 0.25;
 
-            const total = fansScore * 0.4 + engScore * 0.4 + contentScore * 0.2;
-
-            if (total >= 70) return 'S';
-            if (total >= 40) return 'A';
-            if (total >= 15) return 'B';
-            return 'C';
+            if (total >= 80) return 'SS';
+            if (total >= 65) return 'S';
+            if (total >= 50) return 'A';
+            if (total >= 35) return 'B';
+            if (total >= 20) return 'C';
+            return 'D';
         }
         const gradesArr = RAW_DATA.accounts.map((_, i) => getGrade(i));
 
         // 兼容旧代码的 accountData
-        const accountData = { labels, fans: fansArr, likes: likesArr, videos: videosArr, avgLikes: avgLikesArr, engagement: engagementArr, grades: gradesArr, plays: [0,0,0,0,0,0,0], avgPlays: [0,0,0,0,0,0,0] };
+        const accountData = { labels, fans: fansArr, likes: likesArr, videos: videosArr, avgLikes: avgLikesArr, engagement: engArr, grades: gradesArr, plays: [0,0,0,0,0,0,0], avgPlays: [0,0,0,0,0,0,0] };
 
         // 核心指标总览
         const totalFans = fansArr.reduce((s, v) => s + v, 0);
@@ -1222,15 +1247,18 @@
             const container = document.getElementById('accountCards');
             container.innerHTML = RAW_DATA.accounts.map((acc, idx) => {
                 const grade = gradesArr[idx];
-                const gradeLabel = grade === 'S' && fansArr[idx] > 100000 ? 'S+级' : grade + '级';
+                const gradeLabel = grade + '级';
                 const avg = avgLikesArr[idx];
-                const eng = engagementArr[idx];
+                const eng = engArr[idx];
+                const engLike = engLikeArr[idx];
                 const engColor = eng > 10 ? 'success' : eng > 5 ? 'primary' : '';
                 const engTag = engColor || 'warning';
                 const videos = acc.latest_videos || [];
                 const latest = videos.length > 0 ? videos[0] : null;
                 const latestDate = latest ? (latest.create_time || '').slice(5) : '-';
                 const latestTitle = latest ? (latest.desc || '暂无').split('#')[0].trim() : '暂无';
+                const avgComment = commentArr[idx];
+                const avgShare = shareArr[idx];
 
                 // 账号选择器按钮
                 const gradeClass = grade.toLowerCase();
@@ -1266,18 +1294,19 @@
                             <div class="metric-change ${avg >= 100 ? 'up' : 'neutral'}">${avg >= 100 ? '↑ 优质' : '- 待提升'}</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                            <div class="metric-label">总播放量</div>
-                            <div class="metric-change neutral">- 需登录</div>
+                            <div class="metric-value">${avgComment}</div>
+                            <div class="metric-label">均评论/篇</div>
+                            <div class="metric-change ${avgComment >= 10 ? 'up' : avgComment >= 3 ? 'primary' : 'neutral'}">${avgComment >= 10 ? '↑ 热评' : avgComment >= 3 ? '↑ 正常' : '- 偏低'}</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value" style="font-size:0.85em;">暂无数据</div>
-                            <div class="metric-label">均播放/篇</div>
-                            <div class="metric-change neutral">- 需登录</div>
+                            <div class="metric-value">${avgShare}</div>
+                            <div class="metric-label">均分享/篇</div>
+                            <div class="metric-change ${avgShare >= 20 ? 'up' : avgShare >= 5 ? 'primary' : 'neutral'}">${avgShare >= 20 ? '↑ 爆款' : avgShare >= 5 ? '↑ 正常' : '- 偏低'}</div>
                         </div>
                     </div>
                     <div class="account-tags">
-                        <span class="tag ${engTag}">互动率 ${eng}%</span>
+                        <span class="tag ${engTag}">全互动率 ${eng}%</span>
+                        <span class="tag warning">点赞互动 ${engLike}%</span>
                         <span class="tag ${acc.type === 'competitor' ? '' : 'primary'}">${acc.tag}</span>
                     </div>
                     ${latest ? `
@@ -1326,9 +1355,9 @@
 
         // ========== 排名表（动态排序） ==========
         const ranked = RAW_DATA.accounts.map((a, i) => ({
-            name: a.name, fans: a.fans, likes: a.likes, plays: 0, videos: a.videos,
-            avg: Math.round(a.likes / a.videos), avgPlays: 0, eng: engagementArr[i],
-            grade: gradesArr[i], trend: engagementArr[i] > 5 ? 'up' : 'neutral'
+            name: a.name, fans: a.fans, likes: a.likes, videos: a.videos,
+            avg: avgLikesArr[i], avgComment: commentArr[i], avgShare: shareArr[i], eng: engArr[i],
+            grade: gradesArr[i], trend: engArr[i] > 5 ? 'up' : 'neutral'
         })).sort((a, b) => b.likes - a.likes).map((r, i) => ({ ...r, rank: i + 1 }));
 
         const tableBody = document.getElementById('rankingTable');
@@ -1341,10 +1370,10 @@
                 <td><strong>${row.name}</strong></td>
                 <td>${fmt(row.fans)}</td>
                 <td>${fmt(row.likes)}</td>
-                <td><span style="color:#9ca3af">暂无</span></td>
                 <td>${row.videos}</td>
-                <td>${row.avg.toLocaleString()}</td>
-                <td><span style="color:#9ca3af">暂无</span></td>
+                <td>${row.avg >= 10000 ? fmt(row.avg) : row.avg.toLocaleString()}</td>
+                <td>${row.avgComment}</td>
+                <td>${row.avgShare}</td>
                 <td>${row.eng}%</td>
                 <td><span class="grade-badge grade-${row.grade.toLowerCase()}">${row.grade}</span></td>
                 <td><span class="trend-indicator trend-${trendClass}">${trendIcon}</span></td>`;
@@ -1356,11 +1385,11 @@
             const topAccount = [...RAW_DATA.accounts].sort((a, b) => b.likes - a.likes)[0];
             const ownAccounts = RAW_DATA.accounts.filter(a => a.type === 'own');
             const ownTop = ownAccounts.sort((a, b) => b.likes - a.likes)[0];
-            const highEngLowFans = RAW_DATA.accounts.filter(a => a.fans < 1000 && engagementArr[RAW_DATA.accounts.indexOf(a)] > 5).sort((a, b) => b.likes - a.likes)[0];
-            const ownTopEng = engagementArr[RAW_DATA.accounts.indexOf(ownTop)];
-            const topEng = engagementArr[RAW_DATA.accounts.indexOf(topAccount)];
+            const highEngLowFans = RAW_DATA.accounts.filter(a => a.fans < 1000 && engArr[RAW_DATA.accounts.indexOf(a)] > 5).sort((a, b) => b.likes - a.likes)[0];
+            const ownTopEng = engArr[RAW_DATA.accounts.indexOf(ownTop)];
+            const topEng = engArr[RAW_DATA.accounts.indexOf(topAccount)];
             const highEngAvg = highEngLowFans ? Math.round(highEngLowFans.likes / highEngLowFans.videos) : 0;
-            const highEngVal = highEngLowFans ? engagementArr[RAW_DATA.accounts.indexOf(highEngLowFans)] : 0;
+            const highEngVal = highEngLowFans ? engArr[RAW_DATA.accounts.indexOf(highEngLowFans)] : 0;
 
             document.getElementById('insightsContainer').innerHTML = `
                 <div class="insight-item">
