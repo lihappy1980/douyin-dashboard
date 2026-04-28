@@ -223,7 +223,7 @@
         }
         
         .chart-container.small {
-            height: 250px;
+            height: 280px;
         }
         
         /* 数据表格 */
@@ -1475,12 +1475,49 @@
         renderAccountCards();
 
         // ========== 图表 ==========
+        // 数据标签插件配置（显示柱子顶部数值）
+        const dataLabelColor = '#374151';
+        const dataLabelFont = { size: 11, weight: 'bold' };
+        const dataLabelsPlugin = {
+            id: 'dataLabels',
+            afterDatasetsDraw(chart) {
+                const { ctx, data, scales } = chart;
+                const meta = chart.getDatasetMeta(0);
+                meta.data.forEach((bar, i) => {
+                    const val = data.datasets[0].data[i];
+                    if (val === 0) return; // 播放量数据为0时不显示
+                    const label = val >= 10000 ? (val / 10000).toFixed(1) + '万' : val >= 1000 ? (val / 1000).toFixed(1) + 'k' : val.toString();
+                    ctx.save();
+                    ctx.font = `bold ${dataLabelFont.size}px -apple-system, sans-serif`;
+                    ctx.fillStyle = dataLabelColor;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    const textX = bar.x;
+                    const textY = bar.y - 4;
+                    ctx.fillText(label, textX, textY);
+                    ctx.restore();
+                });
+            }
+        };
+
+        // 通用图表配置
         const chartOptions = {
             responsive: true, maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-                y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
-                x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+                y: {
+                    beginAtZero: true,
+                    grid: { color: 'rgba(0,0,0,0.05)' },
+                    ticks: {
+                        font: { size: 11 },
+                        callback: function(value) {
+                            if (value >= 10000) return (value / 10000) + '万';
+                            if (value >= 1000) return (value / 1000) + 'k';
+                            return value;
+                        }
+                    }
+                },
+                x: { grid: { display: false }, ticks: { font: { size: 10 }, maxRotation: 30, minRotation: 0 } }
             }
         };
 
@@ -1488,7 +1525,12 @@
         const COLORS_7B = ['#f472b6','#ec4899','#a78bfa','#60a5fa','#fb923c','#f97316','#ef4444'];
 
         function makeChart(id, data, colors, opts) {
-            new Chart(document.getElementById(id), { type: 'bar', data: { labels, datasets: [{ data, backgroundColor: colors, borderRadius: 8 }] }, options: opts || chartOptions });
+            new Chart(document.getElementById(id), {
+                type: 'bar',
+                data: { labels, datasets: [{ data, backgroundColor: colors, borderRadius: 8 }] },
+                options: opts || chartOptions,
+                plugins: [dataLabelsPlugin]
+            });
         }
 
         makeChart('fansChart', fansArr, COLORS_7);
@@ -1496,10 +1538,38 @@
         makeChart('videosChart', videosArr, ['#34d399','#10b981','#a78bfa','#60a5fa','#fb923c','#f472b6','#f97316']);
         makeChart('avgLikesChart', avgLikesArr, ['#fbbf24','#f59e0b','#a78bfa','#60a5fa','#fb923c','#f472b6','#f97316']);
 
-        // 播放量图表（暂无数据）
-        const playsOpts = { ...chartOptions, plugins: { ...chartOptions.plugins, tooltip: { callbacks: { label: c => c.parsed.y + ' 万次' } } }, scales: { ...chartOptions.scales, y: { ...chartOptions.scales.y, ticks: { callback: v => v + '万' } } } };
-        makeChart('playsChart', [0,0,0,0,0,0,0], ['#11998e88','#38ef7d88','#a7f3d0','#d1fae5','#fb923c88','#f472b688','#f9731688'], playsOpts);
-        makeChart('avgPlaysChart', [0,0,0,0,0,0,0], ['#f7971e88','#ffd20088','#fed7aa','#fef3c7','#fb923c88','#f472b688','#f9731688'], playsOpts);
+        // 播放量图表（暂无数据，不显示数据标签，用特殊插件）
+        const noDataPlugin = {
+            id: 'noDataLabels',
+            afterDatasetsDraw(chart) {
+                // 播放量数据全为0，不显示任何标签
+            }
+        };
+        const playsOpts = {
+            ...chartOptions,
+            plugins: { legend: { display: false } },
+            scales: {
+                ...chartOptions.scales,
+                y: {
+                    ...chartOptions.scales.y,
+                    max: 10, // 全0数据给一个小max避免图表塌陷
+                    ticks: { font: { size: 11 }, callback: v => v === 0 ? '暂无' : v }
+                }
+            }
+        };
+        // 播放量图表使用 noDataPlugin 而非 dataLabelsPlugin
+        new Chart(document.getElementById('playsChart'), {
+            type: 'bar',
+            data: { labels, datasets: [{ data: [0,0,0,0,0,0,0], backgroundColor: ['#11998e88','#38ef7d88','#a7f3d0','#d1fae5','#fb923c88','#f472b688','#f9731688'], borderRadius: 8 }] },
+            options: playsOpts,
+            plugins: [noDataPlugin]
+        });
+        new Chart(document.getElementById('avgPlaysChart'), {
+            type: 'bar',
+            data: { labels, datasets: [{ data: [0,0,0,0,0,0,0], backgroundColor: ['#f7971e88','#ffd20088','#fed7aa','#fef3c7','#fb923c88','#f472b688','#f9731688'], borderRadius: 8 }] },
+            options: playsOpts,
+            plugins: [noDataPlugin]
+        });
 
         // ========== 排名表（动态排序） ==========
         const ranked = RAW_DATA.accounts.map((a, i) => ({
